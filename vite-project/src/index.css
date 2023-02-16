@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.side-bar {
+  background-color: rgb(17, 20, 29);
+}
+.menus {
+  margin-top: 20px;
+}
+.menus li {
+  margin: 10px 0px;
+  padding: 9px;
+  font-size: 19px;
+  color: rgb(189, 189, 189);
+  display: flex;
+  align-items: center;
+}
+
+.menus li:hover {
+  background-color: rgb(44, 44, 44);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.menus li svg {
+  margin-right: 10px;
+}
