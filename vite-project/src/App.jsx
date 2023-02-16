@@ -1,12 +1,12 @@
-// import "./App.css";
-// import "./index.css";
+import React from "react";
+import { SideBar } from "./components";
 
-function App() {
+const App = () => {
   return (
-    <div className="bg-blue-500">
-      <h1 className="text-3xl font-bold underline">Hello world</h1>
+    <div>
+      <SideBar />
     </div>
   );
-}
+};
 
 export default App;
