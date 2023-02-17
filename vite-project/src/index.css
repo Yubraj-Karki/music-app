@@ -26,3 +26,7 @@
 .menus li svg {
   margin-right: 10px;
 }
+
+.wrapper {
+  display: flex;
+}

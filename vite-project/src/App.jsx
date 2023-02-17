@@ -6,11 +6,17 @@ import { Explore, Artists } from "./pages";
 const App = () => {
   return (
     <BrowserRouter>
-      <SideBar />
-      <Routes>
-        <Route path="/" element={<Explore />} />
-        <Route path="/artists" element={<Artists />} />
-      </Routes>
+      <div className="wrapper">
+        <aside>
+          <SideBar />
+        </aside>
+        <main className="p-3">
+          <Routes>
+            <Route path="/" element={<Explore />} />
+            <Route path="/artists" element={<Artists />} />
+          </Routes>
+        </main>
+      </div>
     </BrowserRouter>
   );
 };
