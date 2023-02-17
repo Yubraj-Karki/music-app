@@ -1,11 +1,17 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SideBar } from "./components";
+import { Explore, Artists } from "./pages";
 
 const App = () => {
   return (
-    <div>
+    <BrowserRouter>
       <SideBar />
-    </div>
+      <Routes>
+        <Route path="/" element={<Explore />} />
+        <Route path="/artists" element={<Artists />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
