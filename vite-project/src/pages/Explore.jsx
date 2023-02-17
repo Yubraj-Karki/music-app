@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { SpotifyProvider } from "../../context";
 
 const Explore = () => {
-  return <div>Explore</div>;
+  const { topArtists } = useContext(SpotifyProvider);
+  return <div>{console.log(topArtists)}</div>;
 };
 
 export default Explore;
