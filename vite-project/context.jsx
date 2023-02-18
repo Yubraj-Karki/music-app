@@ -6,13 +6,13 @@ export const SpotifyProvider = ({ children }) => {
   const [topTracks, setTopTracks] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
 
-  const token = "d2b3436a5amshec421dbcda0c511p1b980djsn63308e328379";
+  const apiKey = process.env.MUSIC_APP_API_KEY;
 
   const fetchTopCharts = async () => {
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "d2b3436a5amshec421dbcda0c511p1b980djsn63308e328379",
+        "X-RapidAPI-Key": `${apiKey}`,
         "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
       },
     };
