@@ -1,26 +1,44 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-export const SpotifyContext = createContext();
+export const SpotifyContext = React.createContext();
 
-const SpotifyProvider = ({ children }) => {
+export const SpotifyProvider = ({ children }) => {
   const [topTracks, setTopTracks] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
 
-  useEffect(() => {
-    const fetchTopCharts = async () => {
+  const token = "d2b3436a5amshec421dbcda0c511p1b980djsn63308e328379";
+
+  const fetchTopCharts = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "d2b3436a5amshec421dbcda0c511p1b980djsn63308e328379",
+        "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
+      },
+    };
+
+    const params = new URLSearchParams({
+      ids: "4WNcduiCmDNfmTEz7JvmLv",
+    }).toString();
+
+    try {
       const response = await fetch(
-        "https://api.spotify.com/v1/charts/top?limit=10",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`, // replace with your Spotify access token
-          },
-        }
+        `https://spotify23.p.rapidapi.com/tracks/?${params}`,
+        options
       );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
       const data = await response.json();
       setTopTracks(data.tracks);
-    };
+    } catch (error) {
+      console.error(`Error fetching top charts: ${error}`);
+    }
+  };
 
+  useEffect(() => {
     fetchTopCharts();
   }, []);
 
@@ -34,5 +52,3 @@ const SpotifyProvider = ({ children }) => {
     </SpotifyContext.Provider>
   );
 };
-
-export default SpotifyProvider;

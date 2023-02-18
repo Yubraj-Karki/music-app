@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
+import { ArtistCard } from "../components/index";
 
-import SpotifyProvider from "../../context";
+import { SpotifyContext } from "../../context";
 
 const Explore = () => {
-  // const { topTracks } = useContext(SpotifyProvider);
+  const { topTracks } = useContext(SpotifyContext);
   return (
     <div>
-      {/* {topTracks.map((track) => {
-        return <li>{track}</li>;
-      })} */}
+      <ArtistCard />
     </div>
   );
 };
