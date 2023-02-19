@@ -24,7 +24,8 @@ body {
   scroll-behavior: smooth;
 
   /* setting background color of each pages to this */
-  background: white;
+  background: #0a0a2f;
+  color: white;
 }
 
 img {
@@ -47,3 +48,28 @@ a {
 li {
   list-style-type: none;
 }
+
+.artist-card {
+  max-width: 180px;
+  height: 328px;
+  /* margin-right: 10px; */
+}
+
+.artist-card-img {
+  border-radius: 8px;
+  overflow: hidden;
+}
+.artist-card h4 {
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.artist-card p {
+  font-size: 10px;
+  color: #bababa;
+}
+
+/* .wrapper {
+  background-color: #0a0a2f;
+} */

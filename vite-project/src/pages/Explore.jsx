@@ -4,10 +4,23 @@ import { ArtistCard } from "../components/index";
 import { SpotifyContext } from "../../context";
 
 const Explore = () => {
-  const { topTracks } = useContext(SpotifyContext);
+  // const { topTracks } = useContext(SpotifyContext);
   return (
     <div>
-      <ArtistCard />
+      <div className="container">
+        <section className="topCharts ">
+          <h4 className="section-title  text-[#BABABA] text-[11px] mb-3 uppercase">
+            Top charts
+          </h4>
+          <div className="top-charts-items flex justify-evenly gap-x-8 ">
+            <ArtistCard />
+            <ArtistCard />
+            <ArtistCard />
+            <ArtistCard />
+            <ArtistCard />
+          </div>
+        </section>
+      </div>
     </div>
   );
 };
