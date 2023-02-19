@@ -1,7 +1,7 @@
 import React from "react";
 
 const ArtistCard = () => {
-  return <div>ArtistCard</div>;
+  return <div></div>;
 };
 
 export default ArtistCard;

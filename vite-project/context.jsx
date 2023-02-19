@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 export const SpotifyContext = React.createContext();
+import env from "react-dotenv";
 
 export const SpotifyProvider = ({ children }) => {
   const [topTracks, setTopTracks] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
 
-  const apiKey = process.env.MUSIC_APP_API_KEY;
+  const apiKey = process.env.REACT_APP_API_KEY;
+
+  console.log(process.env.REACT_APP_API_KEY, "api key here");
 
   const fetchTopCharts = async () => {
     const options = {
