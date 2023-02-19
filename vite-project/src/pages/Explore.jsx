@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ArtistCard } from "../components/index";
+import { ArtistCard, Searchbar } from "../components/index";
 
 import { SpotifyContext } from "../../context";
 
@@ -8,6 +8,9 @@ const Explore = () => {
   return (
     <div>
       <div className="container">
+        <header>
+          <Searchbar />
+        </header>
         <section className="topCharts ">
           <h4 className="section-title  text-[#BABABA] text-[11px] mb-3 uppercase">
             Top charts
