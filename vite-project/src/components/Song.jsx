@@ -1,9 +1,10 @@
 import React from "react";
 import { AiFillHeart } from "react-icons/ai";
+import { FiMoreHorizontal } from "react-icons/fi";
 
 const Song = () => {
   return (
-    <div className="flex flex-row items-center space-y-[5px] space-x-[5px]">
+    <div className="flex flex-row items-center justify-between space-y-[5px] space-x-[5px]">
       <div className="song-img-container max-h-[47.33px] w-[56.52px]">
         <img
           src="https://imgs.search.brave.com/aCbef1gsqszeX5le_QgYAhox8VtkOOG0aTvOC0cEWPg/rs:fit:1200:1200:1/g:ce/aHR0cDovL3hoZW5p/Lm1lL2ltYWdlcy9t/dXNpYy9sZWR6ZXBw/ZWxpbjIuSlBH"
@@ -18,8 +19,11 @@ const Song = () => {
         Whole Lotta Love
       </h3>
       <p className="song-length text-[12px] font-normal text-[#BABABA]">5:36</p>
-      <span className="song-heart-icon text-[12px] font-normal text-[#BABABA]">
+      <span className="song-heart-icon text-[18px] font-normal text-[#BABABA]">
         <AiFillHeart />
+      </span>
+      <span className="song-more-icon text-[20px] font-normal text-[#BABABA]">
+        <FiMoreHorizontal />
       </span>
     </div>
   );

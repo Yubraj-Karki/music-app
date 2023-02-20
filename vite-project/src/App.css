@@ -51,7 +51,7 @@ li {
 
 .artist-card {
   max-width: 180px;
-  height: 328px;
+  max-height: 328px;
   /* margin-right: 10px; */
 }
 
