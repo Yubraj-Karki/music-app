@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ArtistCard, Searchbar, PageTitle } from "../components/index";
+import { ArtistCard, Searchbar, PageTitle, Song } from "../components/index";
 
 import { SpotifyContext } from "../../context";
 
@@ -24,6 +24,10 @@ const Explore = () => {
           </div>
         </section>
         <PageTitle title="Explore" icon="icon-name" />
+
+        <section>
+          <Song />
+        </section>
       </div>
     </div>
   );
