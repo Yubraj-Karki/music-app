@@ -6,8 +6,8 @@
   margin-top: 20px;
 }
 .menus li {
-  margin: 10px 0px;
-  padding: 9px;
+  margin: 30px 0px;
+  /* padding: 9px; */
   display: flex;
   align-items: center;
 }
