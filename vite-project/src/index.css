@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.side-bar {
-  background-color: rgb(17, 20, 29);
-}
 .menus {
   margin-top: 20px;
 }
