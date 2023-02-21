@@ -51,14 +51,20 @@ li {
 
 .artist-card {
   max-width: 180px;
-  max-height: 328px;
+  width: 180px;
+
   /* margin-right: 10px; */
 }
 
 .artist-card-img {
   border-radius: 8px;
   overflow: hidden;
-  height: 123px;
+  height: 153px;
+}
+
+.artist-card-img img {
+  object-fit: cover;
+  object-position: center;
 }
 .artist-card h4 {
   font-size: 13px;

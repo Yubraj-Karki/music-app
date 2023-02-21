@@ -11,12 +11,7 @@ const SideBar = () => {
   return (
     <div className="side-bar bg-[#0C0B39] p-10 pt-[20px] h-screen w-[273px] text-white">
       <div className="logo-title flex items-center mb-[46px]">
-        <img
-          className="h-[39px] w-[39px] mr-[10px]"
-          src="/logo.png"
-          alt=""
-          srcset=""
-        />
+        <img className="h-[39px] w-[39px] mr-[10px]" src="/logo.png" alt="" />
         <h3 className="font-bold text-[18px]">MUSIXBOX</h3>
       </div>
       <ul className="menus text-[16px]">
