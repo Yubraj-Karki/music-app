@@ -8,9 +8,17 @@ import { TbPlaylist } from "react-icons/tb";
 
 const SideBar = () => {
   return (
-    <div className="side-bar bg-[#0C0B39] p-10 h-screen w-64 text-white">
-      <h3 className="font-bold text-[16px]">MUSIXBOX</h3>
-      <ul className="menus">
+    <div className="side-bar bg-[#0C0B39] p-10 h-screen w-[273px] text-white">
+      <div className="logo-title flex items-center">
+        <img
+          className="h-[39px] w-[39px] mr-[10px]"
+          src="/logo.png"
+          alt=""
+          srcset=""
+        />
+        <h3 className="font-bold text-[18px]">MUSIXBOX</h3>
+      </div>
+      <ul className="menus text-[16px]">
         <Link to="/">
           <li>
             <RiCompassDiscoverLine />
