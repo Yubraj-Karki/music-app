@@ -58,11 +58,12 @@ li {
 .artist-card-img {
   border-radius: 8px;
   overflow: hidden;
+  height: 123px;
 }
 .artist-card h4 {
   font-size: 13px;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 6px;
 }
 
 .artist-card p {

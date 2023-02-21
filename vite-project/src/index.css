@@ -28,5 +28,6 @@
 }
 
 .wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 80%;
 }

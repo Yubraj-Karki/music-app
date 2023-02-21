@@ -10,7 +10,7 @@ const App = () => {
         <aside>
           <SideBar />
         </aside>
-        <main className="p-3">
+        <main className="container">
           <Routes>
             <Route path="/" element={<Explore />} />
             <Route path="/artists" element={<Artists />} />

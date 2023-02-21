@@ -19,7 +19,7 @@ const Song = () => {
         Whole Lotta Love
       </h3>
       <p className="song-length text-[12px] font-normal text-[#BABABA]">5:36</p>
-      <span className="song-heart-icon text-[18px] font-normal text-[#BABABA]">
+      <span className="song-heart-icon text-[18px] font-normal ">
         <AiFillHeart />
       </span>
       <span className="song-more-icon text-[20px] font-normal text-[#BABABA]">
