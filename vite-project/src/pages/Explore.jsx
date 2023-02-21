@@ -1,5 +1,11 @@
 import React, { useContext } from "react";
-import { ArtistCard, Searchbar, PageTitle, Song } from "../components/index";
+import {
+  ArtistCard,
+  Searchbar,
+  PageTitle,
+  SectionTitle,
+  Song,
+} from "../components/index";
 
 import { SpotifyContext } from "../../context";
 
@@ -12,9 +18,7 @@ const Explore = () => {
       </header>
       <section className="topCharts ">
         {/* section title */}
-        <h4 className="section-title  text-[#BABABA] text-[11px] mb-3 uppercase">
-          Top charts
-        </h4>
+        <SectionTitle title="top charts" />
 
         {/* Artists */}
         <div className="top-charts-items flex justify-evenly  gap-x-8 ">
