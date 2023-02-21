@@ -15,7 +15,7 @@ const Explore = () => {
   // const { topTracks } = useContext(SpotifyContext);
   return (
     <div>
-      <header>
+      <header className="">
         <div className="flex items-center justify-between">
           <Searchbar />
           <User
