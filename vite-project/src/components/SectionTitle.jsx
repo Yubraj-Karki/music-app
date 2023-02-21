@@ -1,10 +1,10 @@
 import React from "react";
 
-const SectionTitle = () => {
+const SectionTitle = ({ title }) => {
   return (
     <div>
       <h4 className="section-title  text-[#BABABA] text-[11px] mb-3 uppercase">
-        Top charts
+        {title}
       </h4>
     </div>
   );

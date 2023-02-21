@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { RiHeadphoneFill } from "react-icons/ri";
 import {
   ArtistCard,
   Searchbar,
@@ -16,6 +17,8 @@ const Explore = () => {
       <header>
         <Searchbar />
       </header>
+      <PageTitle title="Explore" icon={RiHeadphoneFill} />
+
       <section className="topCharts ">
         {/* section title */}
         <SectionTitle title="top charts" />
@@ -29,7 +32,6 @@ const Explore = () => {
           <ArtistCard />
         </div>
       </section>
-      <PageTitle title="Explore" icon="icon-name" />
 
       {/* top songs */}
       <section className="grid grid-cols-2 gap-4">
