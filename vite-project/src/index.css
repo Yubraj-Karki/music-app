@@ -31,3 +31,7 @@
   display: grid;
   grid-template-columns: auto 80%;
 }
+
+.wrapper .container {
+  padding-top: 20px;
+}

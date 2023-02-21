@@ -24,7 +24,7 @@ const Explore = () => {
         <SectionTitle title="top charts" />
 
         {/* Artists */}
-        <div className="top-charts-items flex justify-evenly  gap-x-8 ">
+        <div className="top-charts-items flex justify-between">
           <ArtistCard />
           <ArtistCard />
           <ArtistCard />
@@ -34,18 +34,25 @@ const Explore = () => {
       </section>
 
       {/* top songs */}
-      <section className="grid grid-cols-2 gap-4">
-        <div className="top-songs grid grid-col-1">
-          <Song />
-          <Song />
-          <Song />
-          <Song />
-        </div>
-        <div className="top-albums grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 justify-self-end">
-          <ArtistCard />
-          <ArtistCard />
-          <ArtistCard />
-          <ArtistCard />
+      <section>
+        <SectionTitle title="top songs" />
+
+        <div className="grid grid-cols-2 gap-4">
+          <div className="top-songs grid grid-col-1">
+            <Song />
+            <Song />
+            <Song />
+            <Song />
+          </div>
+          <div className="justify-self-end">
+            <SectionTitle title="top albums" />
+            <div className="top-albums grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 ">
+              <ArtistCard />
+              <ArtistCard />
+              <ArtistCard />
+              <ArtistCard />
+            </div>
+          </div>
         </div>
       </section>
     </div>
