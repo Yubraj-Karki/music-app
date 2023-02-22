@@ -5,7 +5,7 @@ const Searchbar = () => {
   return (
     <div className="flex items-center">
       <input
-        className="rounded-full text-[14px] bg-[#121059] outline-0 p-[18px] pl-[70px] w-[25vw]"
+        className="rounded-full text-[14px] bg-[#121059] outline-0 p-[15px] pl-[70px] w-[25vw]"
         type="text"
         placeholder="Search music, artists, and albums"
       ></input>

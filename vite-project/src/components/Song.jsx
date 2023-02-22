@@ -5,6 +5,7 @@ import { FiMoreHorizontal } from "react-icons/fi";
 const Song = ({ img }) => {
   return (
     <div className="flex flex-row items-center justify-between space-y-[5px] space-x-[5px] mb-[25px]">
+      <p>1</p>
       <div className="song-img-container max-h-[47.33px] w-[56.52px]  rounded-[3px] overflow-hidden">
         <img src={img} alt="" />
       </div>
