@@ -7,6 +7,7 @@ import {
   SectionTitle,
   Song,
   User,
+  Control,
 } from "../components/index";
 
 import { SpotifyContext } from "../../context";
@@ -61,6 +62,10 @@ const Explore = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      <section>
+        <Control />
       </section>
     </div>
   );

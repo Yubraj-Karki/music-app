@@ -4,7 +4,17 @@ import Searchbar from "./Searchbar";
 import PageTitle from "./PageTitle";
 import SectionTitle from "./SectionTitle";
 import User from "./User";
+import Control from "./Control";
 
 import Song from "./Song";
 
-export { SideBar, ArtistCard, Searchbar, PageTitle, SectionTitle, Song, User };
+export {
+  SideBar,
+  ArtistCard,
+  Searchbar,
+  PageTitle,
+  SectionTitle,
+  Song,
+  User,
+  Control,
+};
