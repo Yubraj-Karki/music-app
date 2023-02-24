@@ -16,18 +16,6 @@ const Explore = () => {
   // const { topTracks } = useContext(SpotifyContext);
   return (
     <div>
-      <header className="">
-        <div className="flex items-center justify-between">
-          <Searchbar />
-          <User
-            name="John Doe"
-            img="https://images.pexels.com/photos/13358914/pexels-photo-13358914.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          />
-        </div>
-
-        <PageTitle title="Explore" icon={RiHeadphoneFill} />
-      </header>
-
       <section className="topCharts ">
         {/* section title */}
         <SectionTitle title="top charts" />
