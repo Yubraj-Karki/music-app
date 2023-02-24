@@ -8,7 +8,11 @@ import { CgPlayListAdd } from "react-icons/cg";
 const Control = () => {
   return (
     <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-10">
-      <div className="progress-bar"></div>
+      <div className="absolute top-0 left-0 progress-bar w-[100vw] h-[3px] bg-[#D9D9D9]">
+        <div className="relative volume w-[60vw] h-[3px] bg-[#F5E33F]">
+          <span className="absolute right-0 top-[-3px] rounded-full w-[10px] h-[10px] bg-[#F5E33F]"></span>
+        </div>
+      </div>
       <div className="grid grid-cols-3 justify-items-center items-center ">
         <div className="flex items-center justify-between justify-self-start w-[81%]">
           <div className="song-img-container max-h-[47.33px] w-[56.52px]  rounded-[3px] overflow-hidden">
