@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { SideBar } from "./components";
+import { SideBar, Control } from "./components";
 import { Explore, Artists } from "./pages";
 
 const App = () => {
@@ -15,6 +15,9 @@ const App = () => {
             <Route path="/" element={<Explore />} />
             <Route path="/artists" element={<Artists />} />
           </Routes>
+          <section>
+            <Control />
+          </section>
         </main>
       </div>
     </BrowserRouter>

@@ -63,10 +63,6 @@ const Explore = () => {
           </div>
         </div>
       </section>
-
-      <section>
-        <Control />
-      </section>
     </div>
   );
 };

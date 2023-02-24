@@ -7,7 +7,7 @@ import { CgPlayListAdd } from "react-icons/cg";
 
 const Control = () => {
   return (
-    <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-10">
+    <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-10 pt-5 pb-5">
       <div className="absolute top-0 left-0 progress-bar w-[100vw] h-[3px] bg-[#D9D9D9]">
         <div className="relative volume w-[60vw] h-[3px] bg-[#F5E33F]">
           <span className="absolute right-0 top-[-3px] rounded-full w-[10px] h-[10px] bg-[#F5E33F]"></span>
@@ -41,14 +41,14 @@ const Control = () => {
           <RxTrackNext className="mr-[20px]" />
           <ImShuffle className="text-[20px]" />
         </div>
-        <div className="text-[20px] justify-self-end">
+        <div className="text-[25px] justify-self-end">
           <div className="flex items-center">
             <CgPlayListAdd />
 
             <CiVolumeHigh className="ml-[15px]" />
             <div className="volume w-[100px] h-[3px] bg-[#D9D9D9] ml-[10px]">
               <div className="relative volume w-[34px] h-[3px] bg-[#F5E33F]">
-                <span className="absolute right-0 top-[-2px] rounded-full w-[9px] h-[9px] bg-[#F5E33F]"></span>
+                <span className="absolute right-0 top-[-3px] rounded-full w-[9px] h-[9px] bg-[#F5E33F]"></span>
               </div>
             </div>
           </div>
