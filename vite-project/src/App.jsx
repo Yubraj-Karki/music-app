@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SideBar, Control, Searchbar, User, PageTitle } from "./components";
 import { Explore, Artists } from "./pages";
-import { RiHeadphoneFill } from "react-icons/ri";
 
 const App = () => {
   return (
@@ -21,7 +20,6 @@ const App = () => {
               />
             </div>
           </header>
-          <PageTitle title="Explore" icon={RiHeadphoneFill} />
 
           <Routes>
             <Route path="/" element={<Explore />} />

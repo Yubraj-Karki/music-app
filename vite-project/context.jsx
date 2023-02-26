@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export const SpotifyContext = React.createContext();
 import env from "react-dotenv";
