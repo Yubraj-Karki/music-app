@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { RiHeadphoneFill } from "react-icons/ri";
 import {
   ArtistCard,
   Searchbar,
@@ -9,6 +8,7 @@ import {
   User,
   Control,
 } from "../components/index";
+import { RiHeadphoneFill } from "react-icons/ri";
 
 import { SpotifyContext } from "../../context";
 
@@ -16,6 +16,8 @@ const Explore = () => {
   // const { topTracks } = useContext(SpotifyContext);
   return (
     <div>
+      <PageTitle title="Explore" icon={RiHeadphoneFill} />
+
       <section className="topCharts ">
         {/* section title */}
         <SectionTitle title="top charts" />
