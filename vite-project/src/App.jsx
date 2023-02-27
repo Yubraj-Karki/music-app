@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SideBar, Control, Searchbar, User, PageTitle } from "./components";
-import { Explore, Artists, Albums, PlayList } from "./pages";
+import { Explore, Artists, Albums, PlayList, LikedSongs } from "./pages";
 
 const App = () => {
   return (
@@ -26,6 +26,7 @@ const App = () => {
             <Route path="/artists" element={<Artists />} />
             <Route path="/albums" element={<Albums />} />
             <Route path="/playlist" element={<PlayList />} />
+            <Route path="/likedsongs" element={<LikedSongs />} />
           </Routes>
           <section>
             <Control />
