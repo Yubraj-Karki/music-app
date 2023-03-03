@@ -6,6 +6,7 @@ import env from "react-dotenv";
 export const SpotifyProvider = ({ children }) => {
   const [topTracks, setTopTracks] = useState([""]);
   const [topArtists, setTopArtists] = useState([""]);
+  const [isSongPlaying, setIsSongPlaying] = useState(false);
 
   // const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -50,7 +51,9 @@ export const SpotifyProvider = ({ children }) => {
   // }, [topTracks]);
 
   return (
-    <SpotifyContext.Provider value={{ topArtists, topTracks }}>
+    <SpotifyContext.Provider
+      value={{ topArtists, topTracks, isSongPlaying, setIsSongPlaying }}
+    >
       {children}
     </SpotifyContext.Provider>
   );

@@ -1,11 +1,16 @@
-import React from "react";
+import { React, useContext } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
-import { ImPause2, ImPlay3, ImShuffle, ImLoop } from "react-icons/im";
+import { ImPause2, ImShuffle, ImLoop } from "react-icons/im";
 import { RxTrackNext, RxTrackPrevious } from "react-icons/rx";
-import { CiPause1, CiVolumeHigh, CiVolumeMute } from "react-icons/ci";
+import { CiPlay1, CiPause1, CiVolumeHigh, CiVolumeMute } from "react-icons/ci";
 import { CgPlayListAdd } from "react-icons/cg";
 
+import { SpotifyContext } from "../../context";
+
 const Control = () => {
+  const { isSongPlaying, setIsSongPlaying } = useContext(SpotifyContext);
+
+  console.log(isSongPlaying);
   return (
     <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-10 pt-5 pb-5">
       <div className="absolute top-0 left-0 progress-bar w-[100vw] h-[3px] bg-[#D9D9D9]">
@@ -36,7 +41,11 @@ const Control = () => {
           <ImLoop className="text-[20px]" />
           <RxTrackPrevious className="ml-[20px]" />
           <span className="flex justify-center items-center h-[40px] w-[40px] bg-[#fff] text-black rounded-full">
-            <CiPause1 />
+            {isSongPlaying ? (
+              <CiPause1 onClick={() => setIsSongPlaying(!isSongPlaying)} />
+            ) : (
+              <CiPlay1 onClick={() => setIsSongPlaying(!isSongPlaying)} />
+            )}
           </span>
           <RxTrackNext className="mr-[20px]" />
           <ImShuffle className="text-[20px]" />
