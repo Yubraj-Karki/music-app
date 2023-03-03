@@ -15,15 +15,20 @@ const Control = () => {
     setDuration,
     currentTime,
     setCurrentTime,
+    songProgress,
+    setSongProgress,
   } = useContext(SpotifyContext);
+
   const audioRef = useRef(null);
 
   useEffect(() => {
     audioRef.current.addEventListener("loadedmetadata", () => {
-      setDuration(formatDuration(audioRef.current.duration));
+      setDuration(audioRef.current.duration);
     });
     audioRef.current.addEventListener("timeupdate", () => {
-      setCurrentTime(formatDuration(audioRef.current.currentTime));
+      setCurrentTime(audioRef.current.currentTime);
+      setSongProgress(updateProgress());
+      console.log(songProgress, "song progress");
     });
   });
 
@@ -36,7 +41,7 @@ const Control = () => {
     setIsSongPlaying(!isSongPlaying);
   };
 
-  const formatDuration = (duration) => {
+  const formatTime = (duration) => {
     const date = new Date(duration * 1000);
     const minutes = date.getUTCMinutes().toString().padStart(2, "0");
     const seconds = date.getUTCSeconds().toString().padStart(2, "0");
@@ -44,13 +49,23 @@ const Control = () => {
     return `${minutes}:${seconds}`;
   };
 
-  console.log(isSongPlaying);
+  const updateProgress = () => {
+    const progress = (currentTime / duration) * 100;
+    return progress;
+  };
+
   return (
     <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-10 pt-5 pb-5">
       <div className="absolute top-0 left-0 progress-bar w-[100vw] h-[3px] bg-[#D9D9D9]">
-        <div className="relative volume w-[60vw] h-[3px] bg-[#F5E33F]">
+        <div
+          style={{ width: `${songProgress}%` }}
+          className="relative h-[3px] bg-[#F5E33F]"
+        >
           <span className="absolute right-0 top-[-3px] rounded-full w-[10px] h-[10px] bg-[#F5E33F]"></span>
         </div>
+        {/* <div className={`relative w-${songProgress}% h-[3px] bg-[#F5E33F]`}>
+          <span className="absolute right-0 top-[-3px] rounded-full w-[10px] h-[10px] bg-[#F5E33F]"></span>
+        </div> */}
       </div>
       <div className="grid grid-cols-3 justify-items-center items-center ">
         <div className="flex items-center justify-between justify-self-start w-[81%]">
@@ -71,7 +86,7 @@ const Control = () => {
             <AiOutlineHeart />
           </div>
           <p className="ml-[15%] text-[12px] text-[#BABABA]">
-            {currentTime}-{duration}
+            {formatTime(currentTime)}-{formatTime(duration)}
           </p>
         </div>
         <div className="flex justify-items-center items-center justify-between w-[60%] text-[25px]">
