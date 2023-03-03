@@ -20,10 +20,10 @@ const Control = () => {
 
   useEffect(() => {
     audioRef.current.addEventListener("loadedmetadata", () => {
-      setDuration(audioRef.current.duration);
+      setDuration(formatDuration(audioRef.current.duration));
     });
     audioRef.current.addEventListener("timeupdate", () => {
-      setCurrentTime(audioRef.current.currentTime);
+      setCurrentTime(formatDuration(audioRef.current.currentTime));
     });
   });
 
@@ -34,6 +34,14 @@ const Control = () => {
       audioRef.current.play();
     }
     setIsSongPlaying(!isSongPlaying);
+  };
+
+  const formatDuration = (duration) => {
+    const date = new Date(duration * 1000);
+    const minutes = date.getUTCMinutes().toString().padStart(2, "0");
+    const seconds = date.getUTCSeconds().toString().padStart(2, "0");
+
+    return `${minutes}:${seconds}`;
   };
 
   console.log(isSongPlaying);
@@ -63,7 +71,7 @@ const Control = () => {
             <AiOutlineHeart />
           </div>
           <p className="ml-[15%] text-[12px] text-[#BABABA]">
-            00:{currentTime}-{duration}
+            {currentTime}-{duration}
           </p>
         </div>
         <div className="flex justify-items-center items-center justify-between w-[60%] text-[25px]">
