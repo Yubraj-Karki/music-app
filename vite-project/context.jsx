@@ -7,6 +7,8 @@ export const SpotifyProvider = ({ children }) => {
   const [topTracks, setTopTracks] = useState([""]);
   const [topArtists, setTopArtists] = useState([""]);
   const [isSongPlaying, setIsSongPlaying] = useState(false);
+  const [duration, setDuration] = useState("00");
+  const [currentTime, setCurrentTime] = useState("00");
 
   // const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -52,7 +54,16 @@ export const SpotifyProvider = ({ children }) => {
 
   return (
     <SpotifyContext.Provider
-      value={{ topArtists, topTracks, isSongPlaying, setIsSongPlaying }}
+      value={{
+        topArtists,
+        topTracks,
+        isSongPlaying,
+        setIsSongPlaying,
+        duration,
+        setDuration,
+        currentTime,
+        setCurrentTime,
+      }}
     >
       {children}
     </SpotifyContext.Provider>

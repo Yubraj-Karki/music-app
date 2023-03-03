@@ -1,4 +1,4 @@
-import { React, useContext } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { ImPause2, ImShuffle, ImLoop } from "react-icons/im";
 import { RxTrackNext, RxTrackPrevious } from "react-icons/rx";
@@ -8,7 +8,33 @@ import { CgPlayListAdd } from "react-icons/cg";
 import { SpotifyContext } from "../../context";
 
 const Control = () => {
-  const { isSongPlaying, setIsSongPlaying } = useContext(SpotifyContext);
+  const {
+    isSongPlaying,
+    setIsSongPlaying,
+    duration,
+    setDuration,
+    currentTime,
+    setCurrentTime,
+  } = useContext(SpotifyContext);
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    audioRef.current.addEventListener("loadedmetadata", () => {
+      setDuration(audioRef.current.duration);
+    });
+    audioRef.current.addEventListener("timeupdate", () => {
+      setCurrentTime(audioRef.current.currentTime);
+    });
+  });
+
+  const togglePlay = () => {
+    if (isSongPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsSongPlaying(!isSongPlaying);
+  };
 
   console.log(isSongPlaying);
   return (
@@ -25,6 +51,7 @@ const Control = () => {
               src="https://images.pexels.com/photos/3310871/pexels-photo-3310871.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt=""
             />
+            <audio ref={audioRef} src="/song.mp3" />
           </div>
           <div className="song-title">
             <h3 className="text-[13px] font-bold">Whole Lotta Love</h3>
@@ -35,16 +62,18 @@ const Control = () => {
           <div className="text-[21px] font-normal text-[#BABABA]">
             <AiOutlineHeart />
           </div>
-          <p className="ml-[15%] text-[12px] text-[#BABABA]">4:30-5:36</p>
+          <p className="ml-[15%] text-[12px] text-[#BABABA]">
+            00:{currentTime}-{duration}
+          </p>
         </div>
         <div className="flex justify-items-center items-center justify-between w-[60%] text-[25px]">
           <ImLoop className="text-[20px]" />
           <RxTrackPrevious className="ml-[20px]" />
           <span className="flex justify-center items-center h-[40px] w-[40px] bg-[#fff] text-black rounded-full">
             {isSongPlaying ? (
-              <CiPause1 onClick={() => setIsSongPlaying(!isSongPlaying)} />
+              <CiPause1 onClick={togglePlay} />
             ) : (
-              <CiPlay1 onClick={() => setIsSongPlaying(!isSongPlaying)} />
+              <CiPlay1 onClick={togglePlay} />
             )}
           </span>
           <RxTrackNext className="mr-[20px]" />
