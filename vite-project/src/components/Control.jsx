@@ -25,30 +25,30 @@ const Control = () => {
   const sliderRef = useRef(null);
   const sliderContainerRef = useRef(null);
 
-  const audio = audioRef.current;
-
   useEffect(() => {
-    audio.addEventListener("loadedmetadata", () => {
+    const audio = audioRef.current;
+
+    const handleLoadedMetaData = () => {
       setDuration(audio.duration);
-    });
-    audio.addEventListener("timeupdate", () => {
+    };
+
+    const handleTimeUpdate = () => {
       setCurrentTime(audio.currentTime);
-      setSongProgress(updateProgress());
-    });
+      setSliderValue(updateProgress());
+    };
+
+    audio.addEventListener("loadedmetadata", handleLoadedMetaData);
+    audio.addEventListener("timeupdate", handleTimeUpdate);
 
     return () => {
-      audio.removeEventListener("timeupdate", () => {
-        setCurrentTime(audio.currentTime);
-        setSongProgress(updateProgress());
-      });
-
-      audio.removeEventListener("loadedmetadata", () => {
-        setDuration(audio.duration);
-      });
+      audio.removeEventListener("loadedmetadata", handleLoadedMetaData);
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
     };
   }, [currentTime]);
 
   const togglePlay = () => {
+    const audio = audioRef.current;
+
     if (isSongPlaying) {
       audio.pause();
     } else {
@@ -71,9 +71,11 @@ const Control = () => {
   };
 
   const handleSliderChange = (e) => {
+    const audio = audioRef.current;
+
     const value = e.target.value;
     const newTime = (value / duration) * 100;
-    setSongProgress(newTime);
+    setSliderValue(newTime);
     setCurrentTime(newTime);
     audio.currentTime = newTime;
 
@@ -91,7 +93,7 @@ const Control = () => {
           type="range"
           min="0"
           max="100"
-          value={songProgress}
+          value={sliderValue}
           className="absolute top-0 left-0 right-0 w-full h-[3px] bg-gray-300"
           onChange={handleSliderChange}
           style={{
