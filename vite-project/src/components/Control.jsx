@@ -19,6 +19,8 @@ const Control = () => {
     setSongProgress,
     sliderValue,
     setSliderValue,
+    songLoop,
+    setSongLoop,
   } = useContext(SpotifyContext);
 
   const audioRef = useRef(null);
@@ -58,6 +60,27 @@ const Control = () => {
       audio.play();
     }
     setIsSongPlaying(!isSongPlaying);
+  };
+
+  const toggleLoop = () => {
+    const audio = audioRef.current;
+    if (songLoop) {
+      audio.addEventListener("ended", () => {
+        setCurrentTime(0);
+        audio.currentTime = 0;
+        audio.play();
+        console.log("song has ended");
+      });
+    } else {
+      audio.removeEventListener("ended", () => {
+        setCurrentTime(0);
+        audio.currentTime = 0;
+        audio.play();
+        console.log("song has ended");
+      });
+    }
+    setSongLoop(!songLoop);
+    console.log("loopclicked", songLoop);
   };
 
   const formatTime = (duration) => {
@@ -143,7 +166,7 @@ const Control = () => {
           </p>
         </div>
         <div className="flex justify-items-center items-center justify-between w-[60%] text-[25px]">
-          <ImLoop className="text-[20px]" />
+          <ImLoop onClick={toggleLoop} className="text-[20px]" />
           <RxTrackPrevious className="ml-[20px]" />
           <span className="flex justify-center items-center h-[40px] w-[40px] bg-[#fff] text-black rounded-full">
             {isSongPlaying ? (
