@@ -17,26 +17,42 @@ const Control = () => {
     setCurrentTime,
     songProgress,
     setSongProgress,
+    sliderValue,
+    setSliderValue,
   } = useContext(SpotifyContext);
 
   const audioRef = useRef(null);
+  const sliderRef = useRef(null);
+  const sliderContainerRef = useRef(null);
+
+  const audio = audioRef.current;
 
   useEffect(() => {
-    audioRef.current.addEventListener("loadedmetadata", () => {
-      setDuration(audioRef.current.duration);
+    audio.addEventListener("loadedmetadata", () => {
+      setDuration(audio.duration);
     });
-    audioRef.current.addEventListener("timeupdate", () => {
-      setCurrentTime(audioRef.current.currentTime);
+    audio.addEventListener("timeupdate", () => {
+      setCurrentTime(audio.currentTime);
       setSongProgress(updateProgress());
-      console.log(songProgress, "song progress");
     });
-  });
+
+    return () => {
+      audio.removeEventListener("timeupdate", () => {
+        setCurrentTime(audio.currentTime);
+        setSongProgress(updateProgress());
+      });
+
+      audio.removeEventListener("loadedmetadata", () => {
+        setDuration(audio.duration);
+      });
+    };
+  }, [currentTime]);
 
   const togglePlay = () => {
     if (isSongPlaying) {
-      audioRef.current.pause();
+      audio.pause();
     } else {
-      audioRef.current.play();
+      audio.play();
     }
     setIsSongPlaying(!isSongPlaying);
   };
@@ -54,19 +70,51 @@ const Control = () => {
     return progress;
   };
 
+  const handleSliderChange = (e) => {
+    const value = e.target.value;
+    const newTime = (value / duration) * 100;
+    setSongProgress(newTime);
+    setCurrentTime(newTime);
+    audio.currentTime = newTime;
+
+    console.log(value);
+  };
+
   return (
     <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-10 pt-5 pb-5">
-      <div className="absolute top-0 left-0 progress-bar w-[100vw] h-[3px] bg-[#D9D9D9]">
-        <div
-          style={{ width: `${songProgress}%` }}
-          className="relative h-[3px] bg-[#F5E33F]"
-        >
-          <span className="absolute right-0 top-[-3px] rounded-full w-[10px] h-[10px] bg-[#F5E33F]"></span>
-        </div>
-        {/* <div className={`relative w-${songProgress}% h-[3px] bg-[#F5E33F]`}>
-          <span className="absolute right-0 top-[-3px] rounded-full w-[10px] h-[10px] bg-[#F5E33F]"></span>
-        </div> */}
+      <div
+        ref={sliderContainerRef}
+        className="slider absolute top-0 left-0 right-0 h-[3px] bg-white"
+      >
+        <input
+          ref={sliderRef}
+          type="range"
+          min="0"
+          max="100"
+          value={songProgress}
+          className="absolute top-0 left-0 right-0 w-full h-[3px] bg-gray-300"
+          onChange={handleSliderChange}
+          style={{
+            background: "yellow",
+            transition: ".5s ease",
+            // width: `${songProgress}%`,
+          }}
+        />
       </div>
+      {/* <input
+        ref={sliderRef}
+        type="range"
+        min="0"
+        max="100"
+        step="1"
+        value={sliderValue}
+        className="absolute top-0 left-0 right-0 w-full h-[3px] bg-gray-300 appearance-none focus:outline-none"
+        onClick={updateSliderChange}
+        onChange={handleSliderChange}
+        style={{
+          background: `linear-gradient(to right, #f5e33f 0%, #f5e33f ${songProgress}%, #ddd ${songProgress}%, #ddd 100%)`,
+        }}
+      /> */}
       <div className="grid grid-cols-3 justify-items-center items-center ">
         <div className="flex items-center justify-between justify-self-start w-[81%]">
           <div className="song-img-container max-h-[47.33px] w-[56.52px]  rounded-[3px] overflow-hidden">
