@@ -28,6 +28,7 @@ const Control = () => {
   useEffect(() => {
     const audio = audioRef.current;
 
+    // Callback functions
     const handleLoadedMetaData = () => {
       setDuration(audio.duration);
     };
@@ -37,10 +38,12 @@ const Control = () => {
       setSliderValue(updateProgress());
     };
 
+    // Event listeners
     audio.addEventListener("loadedmetadata", handleLoadedMetaData);
     audio.addEventListener("timeupdate", handleTimeUpdate);
 
     return () => {
+      // Clean up functions
       audio.removeEventListener("loadedmetadata", handleLoadedMetaData);
       audio.removeEventListener("timeupdate", handleTimeUpdate);
     };
@@ -74,7 +77,7 @@ const Control = () => {
     const audio = audioRef.current;
 
     const value = e.target.value;
-    const newTime = (value / duration) * 100;
+    const newTime = (value / 100) * duration;
     setSliderValue(newTime);
     setCurrentTime(newTime);
     audio.currentTime = newTime;
