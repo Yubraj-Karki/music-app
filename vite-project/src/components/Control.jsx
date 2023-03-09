@@ -19,8 +19,8 @@ const Control = () => {
     setSongProgress,
     sliderValue,
     setSliderValue,
-    songLoop,
-    setSongLoop,
+    isSongLooping,
+    setIsSongLooping,
   } = useContext(SpotifyContext);
 
   const audioRef = useRef(null);
@@ -64,23 +64,25 @@ const Control = () => {
 
   const toggleLoop = () => {
     const audio = audioRef.current;
-    if (songLoop) {
-      audio.addEventListener("ended", () => {
-        setCurrentTime(0);
-        audio.currentTime = 0;
-        audio.play();
-        console.log("song has ended");
-      });
+
+    const handleSongEnd = () => {
+      console.log("from handlesong end");
+
+      setCurrentTime(0);
+      audio.currentTime = 0;
+    };
+
+    if (isSongLooping) {
+      setIsSongLooping(!isSongLooping);
+
+      console.log("song is looping");
+      audio.addEventListener("ended", handleSongEnd);
     } else {
-      audio.removeEventListener("ended", () => {
-        setCurrentTime(0);
-        audio.currentTime = 0;
-        audio.play();
-        console.log("song has ended");
-      });
+      setIsSongLooping(!isSongLooping);
+
+      console.log("song is not looping looping");
+      audio.removeEventListener("ended", handleSongEnd);
     }
-    setSongLoop(!songLoop);
-    console.log("loopclicked", songLoop);
   };
 
   const formatTime = (duration) => {
@@ -166,7 +168,12 @@ const Control = () => {
           </p>
         </div>
         <div className="flex justify-items-center items-center justify-between w-[60%] text-[25px]">
-          <ImLoop onClick={toggleLoop} className="text-[20px]" />
+          <span style={{ color: isSongLooping && "#F5E33F" }}>
+            <ImLoop onClick={toggleLoop} className="text-[20px]" />
+            {isSongLooping && (
+              <span className="block bg-[#F5E33F] mx-auto h-[3px] w-[3px] rounded-full"></span>
+            )}
+          </span>
           <RxTrackPrevious className="ml-[20px]" />
           <span className="flex justify-center items-center h-[40px] w-[40px] bg-[#fff] text-black rounded-full">
             {isSongPlaying ? (
