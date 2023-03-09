@@ -51,6 +51,42 @@ const Control = () => {
     };
   }, [currentTime]);
 
+  const toggleLoop = () => {
+    const audio = audioRef.current;
+
+    const handleSongEnd = () => {
+      setCurrentTime(0);
+      audio.currentTime = 0;
+      audio.play();
+    };
+
+    setIsSongLooping(!isSongLooping);
+  };
+
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    const handleSongEnd = () => {
+      setCurrentTime(0);
+      audio.currentTime = 0;
+      audio.play();
+    };
+
+    if (!isSongLooping) {
+      audio.removeEventListener("ended", handleSongEnd);
+      console.log("removing event listener");
+    } else {
+      audio.addEventListener("ended", handleSongEnd);
+      console.log("adding event listener");
+    }
+
+    return () => {
+      // Clean up functions
+
+      audio.removeEventListener("ended", handleSongEnd);
+    };
+  }, [isSongLooping]);
+
   const togglePlay = () => {
     const audio = audioRef.current;
 
@@ -60,29 +96,6 @@ const Control = () => {
       audio.play();
     }
     setIsSongPlaying(!isSongPlaying);
-  };
-
-  const toggleLoop = () => {
-    const audio = audioRef.current;
-
-    const handleSongEnd = () => {
-      console.log("from handlesong end");
-
-      setCurrentTime(0);
-      audio.currentTime = 0;
-    };
-
-    if (isSongLooping) {
-      setIsSongLooping(!isSongLooping);
-
-      console.log("song is looping");
-      audio.addEventListener("ended", handleSongEnd);
-    } else {
-      setIsSongLooping(!isSongLooping);
-
-      console.log("song is not looping looping");
-      audio.removeEventListener("ended", handleSongEnd);
-    }
   };
 
   const formatTime = (duration) => {
