@@ -134,6 +134,8 @@ const Control = () => {
     setVolumeSliderValue(volumeSliderValue);
     setVolume(songVolume);
     audio.volume = songVolume;
+
+    console.log(songVolume);
   };
 
   return (
@@ -148,7 +150,7 @@ const Control = () => {
           min="0"
           max="100"
           value={sliderValue}
-          className="absolute top-0 left-0 right-0 w-full h-[3px] bg-gray-300"
+          className="cursor-pointer absolute top-0 left-0 right-0 w-full h-[3px] bg-gray-300"
           onChange={handleSliderChange}
           style={{
             background: "yellow",
@@ -172,7 +174,7 @@ const Control = () => {
               Led Zeppelin
             </p>
           </div>
-          <div className="text-[21px] font-normal text-[#BABABA]">
+          <div className="cursor-pointer text-[21px] font-normal text-[#BABABA]">
             <AiOutlineHeart />
           </div>
           <p className="ml-[15%] text-[12px] text-[#BABABA]">
@@ -181,34 +183,37 @@ const Control = () => {
         </div>
         <div className="flex justify-items-center items-center justify-between w-[60%] text-[25px]">
           <span style={{ color: isSongLooping && "#F5E33F" }}>
-            <ImLoop onClick={toggleLoop} className="text-[20px]" />
+            <ImLoop
+              onClick={toggleLoop}
+              className="cursor-pointer text-[20px]"
+            />
             {isSongLooping && (
               <span className="block bg-[#F5E33F] mx-auto h-[3px] w-[3px] rounded-full"></span>
             )}
           </span>
-          <RxTrackPrevious className="ml-[20px]" />
-          <span className="flex justify-center items-center h-[40px] w-[40px] bg-[#fff] text-black rounded-full">
+          <RxTrackPrevious className="cursor-pointer ml-[20px]" />
+          <span className="cursor-pointer flex justify-center items-center h-[40px] w-[40px] bg-[#fff] text-black rounded-full">
             {isSongPlaying ? (
               <CiPause1 onClick={togglePlay} />
             ) : (
               <CiPlay1 onClick={togglePlay} />
             )}
           </span>
-          <RxTrackNext className="mr-[20px]" />
-          <ImShuffle className="text-[20px]" />
+          <RxTrackNext className="cursor-pointer mr-[20px]" />
+          <ImShuffle className="cursor-pointer text-[20px]" />
         </div>
         <div className="text-[25px] justify-self-end">
           <div className="flex items-center">
-            <CgPlayListAdd />
+            <CgPlayListAdd className="cursor-pointer" />
             <div className="flex justify-center items-center">
-              <CiVolumeHigh className="ml-[15px]" />
+              <CiVolumeHigh className="cursor-pointer ml-[15px]" />
               <div>
                 <input
                   type="range"
                   min="0"
                   max="100"
                   value={volumeSliderValue}
-                  className="right-0 w-full h-[3px] bg-gray-300 mb-[22px]"
+                  className="cursor-pointer right-0 w-full h-[3px] bg-gray-300 mb-[22px]"
                   onChange={handleVolumeSliderChange}
                   style={{
                     background: "yellow",
