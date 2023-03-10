@@ -80,3 +80,31 @@ li {
 /* .wrapper {
   background-color: #0a0a2f;
 } */
+
+/* Style the slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: yellow;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: none;
+  margin-top: 0px;
+}
+
+/* Style the slider thumb on Firefox */
+input[type="range"]::-moz-range-thumb {
+  background-color: yellow;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: none;
+}
+
+/* input[type="range"]::-webkit-slider-runnable-track {
+  background-color: red;
+}
+input[type="range"]::-moz-range-track {
+  background-color: red;
+} */

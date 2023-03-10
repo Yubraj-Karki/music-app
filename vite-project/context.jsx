@@ -10,10 +10,9 @@ export const SpotifyProvider = ({ children }) => {
   const [duration, setDuration] = useState("00");
   const [currentTime, setCurrentTime] = useState("00");
   const [songProgress, setSongProgress] = useState("0");
-  const [songVolume, setSongVolume] = useState("");
   const [sliderValue, setSliderValue] = useState("0");
   const [isSongLooping, setIsSongLooping] = useState(false);
-  const [volume, setVolume] = useState("0.5");
+  const [songVolume, setSongVolume] = useState("0.5");
   const [isMuted, setIsMuted] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [volumeSliderValue, setVolumeSliderValue] = useState("");
@@ -77,8 +76,8 @@ export const SpotifyProvider = ({ children }) => {
         setSliderValue,
         isSongLooping,
         setIsSongLooping,
-        volume,
-        setVolume,
+        songVolume,
+        setSongVolume,
         isMuted,
         setIsMuted,
         isLiked,

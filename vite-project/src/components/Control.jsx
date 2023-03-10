@@ -23,8 +23,10 @@ const Control = () => {
     setIsSongLooping,
     volumeSliderValue,
     setVolumeSliderValue,
-    volume,
-    setVolume,
+    songVolume,
+    setSongVolume,
+    isMuted,
+    setIsMuted,
   } = useContext(SpotifyContext);
 
   const audioRef = useRef(null);
@@ -132,10 +134,14 @@ const Control = () => {
     const volumeSliderValue = e.target.value;
     const songVolume = volumeSliderValue / 100;
     setVolumeSliderValue(volumeSliderValue);
-    setVolume(songVolume);
+    setSongVolume(songVolume);
     audio.volume = songVolume;
 
-    console.log(songVolume);
+    if (songVolume <= 0) {
+      setIsMuted(true);
+    } else {
+      setIsMuted(false);
+    }
   };
 
   return (
@@ -150,10 +156,9 @@ const Control = () => {
           min="0"
           max="100"
           value={sliderValue}
-          className="cursor-pointer absolute top-0 left-0 right-0 w-full h-[3px] bg-gray-300"
+          className="cursor-pointer appearance-none absolute top-0 left-0 right-0 w-full h-[3px] bg-gray-300"
           onChange={handleSliderChange}
           style={{
-            background: "yellow",
             transition: ".5s ease",
           }}
         />
@@ -206,7 +211,13 @@ const Control = () => {
           <div className="flex items-center">
             <CgPlayListAdd className="cursor-pointer" />
             <div className="flex justify-center items-center">
-              <CiVolumeHigh className="cursor-pointer ml-[15px]" />
+              <div onClick={() => setIsMuted(!isMuted)}>
+                {isMuted ? (
+                  <CiVolumeMute className="cursor-pointer ml-[15px]" />
+                ) : (
+                  <CiVolumeHigh className="cursor-pointer ml-[15px]" />
+                )}
+              </div>
               <div>
                 <input
                   type="range"
@@ -222,7 +233,7 @@ const Control = () => {
                 />
               </div>
 
-              {/* <div className="relative volume w-[34px] h-[3px] bg-[#F5E33F]">
+              {/* <div className="relative songVolume w-[34px] h-[3px] bg-[#F5E33F]">
                 <span className="absolute right-0 top-[-3px] rounded-full w-[9px] h-[9px] bg-[#F5E33F]"></span>
               </div> */}
             </div>
