@@ -13,6 +13,10 @@ export const SpotifyProvider = ({ children }) => {
   const [songVolume, setSongVolume] = useState("");
   const [sliderValue, setSliderValue] = useState("0");
   const [isSongLooping, setIsSongLooping] = useState(false);
+  const [volume, setVolume] = useState("0.5");
+  const [isMuted, setIsMuted] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [volumeSliderValue, setVolumeSliderValue] = useState("");
 
   // const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -73,6 +77,14 @@ export const SpotifyProvider = ({ children }) => {
         setSliderValue,
         isSongLooping,
         setIsSongLooping,
+        volume,
+        setVolume,
+        isMuted,
+        setIsMuted,
+        isLiked,
+        setIsLiked,
+        volumeSliderValue,
+        setVolumeSliderValue,
       }}
     >
       {children}

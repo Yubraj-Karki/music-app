@@ -21,6 +21,10 @@ const Control = () => {
     setSliderValue,
     isSongLooping,
     setIsSongLooping,
+    volumeSliderValue,
+    setVolumeSliderValue,
+    volume,
+    setVolume,
   } = useContext(SpotifyContext);
 
   const audioRef = useRef(null);
@@ -123,6 +127,15 @@ const Control = () => {
     console.log(value);
   };
 
+  const handleVolumeSliderChange = (e) => {
+    const audio = audioRef.current;
+    const volumeSliderValue = e.target.value;
+    const songVolume = volumeSliderValue / 100;
+    setVolumeSliderValue(volumeSliderValue);
+    setVolume(songVolume);
+    audio.volume = songVolume;
+  };
+
   return (
     <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-10 pt-5 pb-5">
       <div
@@ -140,24 +153,10 @@ const Control = () => {
           style={{
             background: "yellow",
             transition: ".5s ease",
-            // width: `${songProgress}%`,
           }}
         />
       </div>
-      {/* <input
-        ref={sliderRef}
-        type="range"
-        min="0"
-        max="100"
-        step="1"
-        value={sliderValue}
-        className="absolute top-0 left-0 right-0 w-full h-[3px] bg-gray-300 appearance-none focus:outline-none"
-        onClick={updateSliderChange}
-        onChange={handleSliderChange}
-        style={{
-          background: `linear-gradient(to right, #f5e33f 0%, #f5e33f ${songProgress}%, #ddd ${songProgress}%, #ddd 100%)`,
-        }}
-      /> */}
+
       <div className="grid grid-cols-3 justify-items-center items-center ">
         <div className="flex items-center justify-between justify-self-start w-[81%]">
           <div className="song-img-container max-h-[47.33px] w-[56.52px]  rounded-[3px] overflow-hidden">
@@ -201,12 +200,26 @@ const Control = () => {
         <div className="text-[25px] justify-self-end">
           <div className="flex items-center">
             <CgPlayListAdd />
-
-            <CiVolumeHigh className="ml-[15px]" />
-            <div className="volume w-[100px] h-[3px] bg-[#D9D9D9] ml-[10px]">
-              <div className="relative volume w-[34px] h-[3px] bg-[#F5E33F]">
-                <span className="absolute right-0 top-[-3px] rounded-full w-[9px] h-[9px] bg-[#F5E33F]"></span>
+            <div className="flex justify-center items-center">
+              <CiVolumeHigh className="ml-[15px]" />
+              <div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={volumeSliderValue}
+                  className="right-0 w-full h-[3px] bg-gray-300 mb-[22px]"
+                  onChange={handleVolumeSliderChange}
+                  style={{
+                    background: "yellow",
+                    transition: ".5s ease",
+                  }}
+                />
               </div>
+
+              {/* <div className="relative volume w-[34px] h-[3px] bg-[#F5E33F]">
+                <span className="absolute right-0 top-[-3px] rounded-full w-[9px] h-[9px] bg-[#F5E33F]"></span>
+              </div> */}
             </div>
           </div>
         </div>
