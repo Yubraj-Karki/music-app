@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useContext } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { ImPause2, ImShuffle, ImLoop } from "react-icons/im";
 import { RxTrackNext, RxTrackPrevious } from "react-icons/rx";
 import { CiPlay1, CiPause1, CiVolumeHigh, CiVolumeMute } from "react-icons/ci";
@@ -27,6 +27,8 @@ const Control = () => {
     setSongVolume,
     isMuted,
     setIsMuted,
+    isLiked,
+    setIsLiked,
   } = useContext(SpotifyContext);
 
   const audioRef = useRef(null);
@@ -144,6 +146,10 @@ const Control = () => {
     }
   };
 
+  if (isMuted) {
+    setSongVolume(0);
+  }
+
   return (
     <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-10 pt-5 pb-5">
       <div
@@ -179,8 +185,15 @@ const Control = () => {
               Led Zeppelin
             </p>
           </div>
-          <div className="cursor-pointer text-[21px] font-normal text-[#BABABA]">
-            <AiOutlineHeart />
+          <div
+            onClick={() => setIsLiked(!isLiked)}
+            className="cursor-pointer text-[21px] font-normal text-[#BABABA]"
+          >
+            {isLiked ? (
+              <AiFillHeart style={{ color: "red" }} />
+            ) : (
+              <AiOutlineHeart />
+            )}
           </div>
           <p className="ml-[15%] text-[12px] text-[#BABABA]">
             {formatTime(currentTime)}-{formatTime(duration)}
