@@ -136,8 +136,16 @@ const Control = () => {
     const volumeSliderValue = e.target.value;
     const songVolume = volumeSliderValue / 100;
     setVolumeSliderValue(volumeSliderValue);
+
+    console.log(songVolume);
+
+    if (isMuted) {
+      audio.volume = 0;
+    } else {
+      audio.volume = songVolume;
+    }
+
     setSongVolume(songVolume);
-    audio.volume = songVolume;
 
     if (songVolume <= 0) {
       setIsMuted(true);
@@ -146,9 +154,18 @@ const Control = () => {
     }
   };
 
-  if (isMuted) {
-    setSongVolume(0);
-  }
+  const toggleMute = () => {
+    console.log(isMuted, "top");
+    const audio = audioRef.current;
+    if (isMuted) {
+      audio.volume = 0.9;
+      setVolumeSliderValue(volumeSliderValue);
+    } else {
+      audio.volume = 0;
+    }
+    setIsMuted(!isMuted);
+    console.log(isMuted, "bottom");
+  };
 
   return (
     <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-10 pt-5 pb-5">
@@ -224,7 +241,7 @@ const Control = () => {
           <div className="flex items-center">
             <CgPlayListAdd className="cursor-pointer" />
             <div className="flex justify-center items-center">
-              <div onClick={() => setIsMuted(!isMuted)}>
+              <div onClick={toggleMute}>
                 {isMuted ? (
                   <CiVolumeMute className="cursor-pointer ml-[15px]" />
                 ) : (
