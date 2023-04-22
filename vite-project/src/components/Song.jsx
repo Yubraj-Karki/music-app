@@ -1,8 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiMoreHorizontal } from "react-icons/fi";
+import { SpotifyContext } from "../../context";
 
-const Song = ({ img }) => {
+const Song = ({ img, id }) => {
+  const { likedSongs, setLikedSongs, getSong } = useContext(SpotifyContext);
+
+  const handleLike = (id) => {
+    const clickedSong = getSong(id);
+
+    console.log(clickedSong, "clickedSong");
+
+    const isSongAvailable = likedSongs.find(
+      (likedSong) => clickedSong.id === likedSong.id
+    );
+
+    console.log(isSongAvailable, "<=is song available");
+
+    // If song is already not in the likedSongs array, add song to the list
+    if (!isSongAvailable) {
+      setLikedSongs([...likedSongs, clickedSong]);
+      console.log("liked song state updated");
+    }
+  };
+
+  console.log(likedSongs, "here are your liked songs");
+
   return (
     <div className="flex flex-row items-center justify-between space-y-[5px] space-x-[5px] mb-[25px]">
       <p>1</p>
@@ -17,7 +40,12 @@ const Song = ({ img }) => {
         Whole Lotta Love
       </h3>
       <p className="song-length text-[12px] font-normal text-[#BABABA]">5:36</p>
-      <span className="song-heart-icon text-[18px] font-normal text-[#BABABA] ">
+      <span
+        onClick={() => {
+          handleLike(id);
+        }}
+        className="song-heart-icon text-[18px] font-normal text-[#BABABA] "
+      >
         <AiOutlineHeart />
       </span>
       <span className="song-more-icon text-[20px] font-normal text-[#BABABA]">
@@ -26,5 +54,4 @@ const Song = ({ img }) => {
     </div>
   );
 };
-
 export default Song;

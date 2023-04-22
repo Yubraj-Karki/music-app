@@ -37,10 +37,22 @@ const Explore = () => {
         <div className="grid grid-cols-2 gap-4">
           <div className="top-songs">
             <SectionTitle title="top songs" />
-            <Song img="https://images.pexels.com/photos/894156/pexels-photo-894156.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-            <Song img="https://images.pexels.com/photos/3693108/pexels-photo-3693108.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-            <Song img="https://images.pexels.com/photos/1644616/pexels-photo-1644616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-            <Song img="https://images.pexels.com/photos/3310871/pexels-photo-3310871.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+            <Song
+              img="https://images.pexels.com/photos/894156/pexels-photo-894156.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              id="5aAx2yezTd8zXrkmtKl66Z"
+            />
+            <Song
+              img="https://images.pexels.com/photos/3693108/pexels-photo-3693108.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              id="456"
+            />
+            <Song
+              img="https://images.pexels.com/photos/1644616/pexels-photo-1644616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              id="330"
+            />
+            <Song
+              img="https://images.pexels.com/photos/3310871/pexels-photo-3310871.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              id="54gh"
+            />
           </div>
           <div className="justify-self-end">
             <SectionTitle title="top albums" />

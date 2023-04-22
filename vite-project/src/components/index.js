@@ -5,8 +5,8 @@ import PageTitle from "./PageTitle";
 import SectionTitle from "./SectionTitle";
 import User from "./User";
 import Control from "./Control";
-
 import Song from "./Song";
+import Banner from "./Banner";
 
 export {
   SideBar,
@@ -17,4 +17,5 @@ export {
   Song,
   User,
   Control,
+  Banner,
 };
