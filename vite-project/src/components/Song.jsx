@@ -21,6 +21,14 @@ const Song = ({ img, id }) => {
     if (!isSongAvailable) {
       setLikedSongs([...likedSongs, clickedSong]);
       console.log("liked song state updated");
+    } else {
+      const temp = [...likedSongs];
+      const updatedLikedSongs = temp.filter(
+        (song) => song.id === clickedSong.id
+      );
+      setLikedSongs([updatedLikedSongs]);
+
+      console.log(updatedLikedSongs, "updatedLikedSongs");
     }
   };
 
