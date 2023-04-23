@@ -3,6 +3,8 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { SpotifyContext } from "../../context";
 
+import { FaPlay } from "react-icons/fa";
+
 const Song = ({ img, id }) => {
   const { likedSongs, setLikedSongs, getSong } = useContext(SpotifyContext);
 
@@ -26,7 +28,7 @@ const Song = ({ img, id }) => {
       const updatedLikedSongs = temp.filter(
         (song) => song.id === clickedSong.id
       );
-      setLikedSongs([updatedLikedSongs]);
+      setLikedSongs(updatedLikedSongs);
 
       console.log(updatedLikedSongs, "updatedLikedSongs");
     }
@@ -35,10 +37,16 @@ const Song = ({ img, id }) => {
   console.log(likedSongs, "here are your liked songs");
 
   return (
-    <div className="flex flex-row items-center justify-between space-y-[5px] space-x-[5px] mb-[25px]">
+    <div className="group flex flex-row items-center justify-center justify-between mx-auto mb-[25px] p-[5px] hover:bg-blue-700">
       <p>1</p>
-      <div className="song-img-container max-h-[47.33px] w-[56.52px]  rounded-[3px] overflow-hidden">
-        <img src={img} alt="" />
+      <div className="relative cursor-pointer song-img-container max-h-[47.33px] my-[0px] mx-[0px] w-[56.52px] overflow-hidden">
+        <FaPlay className="absolute opacity-0 text-white text-[20px] top-[30%] left-[30%] group-hover:opacity-100 z-20" />
+
+        <img
+          className="object-cover z-10 group-hover:opacity-60"
+          src={img}
+          alt=""
+        />
       </div>
       <div className="song-title">
         <h3 className="text-[13px] font-bold">Whole Lotta Love</h3>
@@ -52,7 +60,7 @@ const Song = ({ img, id }) => {
         onClick={() => {
           handleLike(id);
         }}
-        className="song-heart-icon text-[18px] font-normal text-[#BABABA] "
+        className="song-heart-icon text-[18px] font-normal text-[#BABABA] cursor-pointer"
       >
         <AiOutlineHeart />
       </span>

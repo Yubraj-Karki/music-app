@@ -4,6 +4,7 @@ import { ImPause2, ImShuffle, ImLoop } from "react-icons/im";
 import { RxTrackNext, RxTrackPrevious } from "react-icons/rx";
 import { CiPlay1, CiPause1, CiVolumeHigh, CiVolumeMute } from "react-icons/ci";
 import { CgPlayListAdd } from "react-icons/cg";
+import SongSrc from "/song.mp3";
 
 import { SpotifyContext } from "../../context";
 
@@ -194,7 +195,7 @@ const Control = () => {
               src="https://images.pexels.com/photos/3310871/pexels-photo-3310871.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt=""
             />
-            <audio ref={audioRef} src="/song.mp3" />
+            <audio ref={audioRef} src={SongSrc} />
           </div>
           <div className="song-title">
             <h3 className="text-[13px] font-bold">Whole Lotta Love</h3>
