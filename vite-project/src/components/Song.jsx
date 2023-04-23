@@ -37,7 +37,7 @@ const Song = ({ img, id }) => {
   console.log(likedSongs, "here are your liked songs");
 
   return (
-    <div className="group flex flex-row items-center justify-center justify-between mx-auto mb-[25px] p-[5px] hover:bg-blue-700">
+    <div className="group flex flex-row items-center justify-center justify-between mx-auto mb-[25px] p-[9px] hover:bg-[#19177F]">
       <p>1</p>
       <div className="relative cursor-pointer song-img-container max-h-[47.33px] my-[0px] mx-[0px] w-[56.52px] overflow-hidden">
         <FaPlay className="absolute opacity-0 text-white text-[20px] top-[30%] left-[30%] group-hover:opacity-100 z-20" />
