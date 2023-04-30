@@ -10,9 +10,10 @@ const App = () => {
         <aside className="relative h-screen hidden">
           <SideBar />
         </aside>
+
         <main className="relative container ">
           <header className="">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col flex-col-reverse items-center justify-between md:flex-row">
               <Searchbar />
               <User
                 name="John Doe"
@@ -28,9 +29,11 @@ const App = () => {
             <Route path="/playlist" element={<PlayList />} />
             <Route path="/likedsongs" element={<LikedSongs />} />
           </Routes>
+
           <section>
             <Control />
           </section>
+
         </main>
       </div>
     </BrowserRouter>

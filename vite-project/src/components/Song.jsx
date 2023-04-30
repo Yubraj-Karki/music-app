@@ -39,7 +39,7 @@ const Song = ({ img, id }) => {
   return (
     <div className="group flex flex-row items-center justify-start justify-between mx-auto mb-[25px] p-[9px] hover:bg-[#19177F] w-full">
       <p>1</p>
-      <div className="relative cursor-pointer song-img-container max-h-[47.33px] my-[0px] mx-[0px] w-[56.52px] overflow-hidden">
+      <div className="hidden md:block relative cursor-pointer song-img-container max-h-[47.33px] my-[0px] mx-[0px] w-[56.52px] overflow-hidden">
         <FaPlay className="absolute opacity-0 text-white text-[20px] top-[30%] left-[30%] group-hover:opacity-100 z-20" />
 
         <img
@@ -52,7 +52,7 @@ const Song = ({ img, id }) => {
         <h3 className="text-[13px] font-bold">Whole Lotta Love</h3>
         <p className="text-[10px] font-normal text-[#BABABA]">Led Zeppelin</p>
       </div>
-      <h3 className="album text-[12px] font-normal text-[#BABABA]">
+      <h3 className="album hidden md:block  text-[12px] font-normal text-[#BABABA]">
         Whole Lotta Love
       </h3>
       <p className="song-length text-[12px] font-normal text-[#BABABA]">5:36</p>
