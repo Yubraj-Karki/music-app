@@ -49,6 +49,6 @@
     grid-template-columns: auto 80%;
   }
   aside {
-    display: block;
+    display: block !important;
   }
 }
