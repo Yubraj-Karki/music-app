@@ -24,7 +24,7 @@ const Explore = () => {
         <SectionTitle title="top charts" />
 
         {/* Artists */}
-        <div className="top-charts-items grid sm:grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="top-charts-items grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           <ArtistCard img="https://images.pexels.com/photos/1886641/pexels-photo-1886641.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
           <ArtistCard img="https://images.pexels.com/photos/1762578/pexels-photo-1762578.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
           <ArtistCard img="https://images.pexels.com/photos/894156/pexels-photo-894156.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
@@ -35,7 +35,7 @@ const Explore = () => {
 
       {/* top songs */}
       <section>
-        <div className="grid lg:grid-cols-2 gap-4">
+        <div className="grid lg:grid-cols-2 gap-6">
           <div className="top-songs">
             <SectionTitle title="top songs" />
             <div className="grid sm:grid-cols-1 ">

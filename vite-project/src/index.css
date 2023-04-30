@@ -32,3 +32,23 @@
 .wrapper .container {
   padding-top: 20px;
 }
+
+@media screen and (max-width: 1243px) {
+  /* CSS rules here */
+  .wrapper {
+    grid-template-columns: auto;
+  }
+  aside {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1244px) {
+  /* CSS rules here */
+  .wrapper {
+    grid-template-columns: auto 80%;
+  }
+  aside {
+    display: block;
+  }
+}

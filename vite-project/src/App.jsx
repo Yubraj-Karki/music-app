@@ -6,11 +6,11 @@ import { Explore, Artists, Albums, PlayList, LikedSongs } from "./pages";
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="wrapper h-[140vh]">
-        <aside className="relative h-screen">
+      <div className="wrapper h-[140vh] ">
+        <aside className="relative h-screen hidden">
           <SideBar />
         </aside>
-        <main className="relative container">
+        <main className="relative container ">
           <header className="">
             <div className="flex items-center justify-between">
               <Searchbar />
