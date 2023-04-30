@@ -2,7 +2,7 @@ import React from "react";
 
 const ArtistCard = ({ img }) => {
   return (
-    <div className="artist-card">
+    <div className="artist-card w-full">
       <div className="artist-card-img">
         <img src={img} alt="" />
       </div>
