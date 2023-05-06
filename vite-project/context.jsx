@@ -1,56 +1,76 @@
 import React, { useState, useEffect, useRef } from "react";
-
 export const SpotifyContext = React.createContext();
 import env from "react-dotenv";
 
 export const SpotifyProvider = ({ children }) => {
   const songs = [
     {
-      id: "5aAx2yezTd8zXrkmtKl66Z",
-      name: "Shape of You",
-      artist: "Ed Sheeran",
-      album: "÷",
-      duration_ms: 233712,
-      popularity: 87,
+      id: "1raaNykBg1bDnWENUzwLxp",
+      name: "I Love You Baby",
+      artist: "Frank Sinatra",
+      album: "Nothing But The Best",
+      img:"https://i.ytimg.com/vi/AiIBKcd4m5Q/mqdefault.jpg",
+
+      duration_ms: 155506,
+      popularity: 76,
+      src:"./I love you baby.mp3",
+      liked: false,
+      
     },
+    
     {
-      id: "1BKT5ren0RT5xmB6DZNJSS",
-      name: "Stupid Love",
-      artist: "Lady Gaga",
-      album: "Chromatica",
-      duration_ms: 183733,
-      popularity: 70,
+      id: "4eLPdQCvCV4PQBzMzNkxbD",
+      name: "Sadeness - Part I",
+      artist: "Enigma",
+      album: "MCMXC a.D.",
+      img:"https://i.ytimg.com/vi/AiIBKcd4m5Q/mqdefault.jpg",
+
+      duration_ms: 265573,
+      popularity: 68,
+      src:"./Sadeness.mp3",
+      liked: true,
     },
+    
     {
-      id: "2YpeDb67231RjR0MgVLzsG",
-      name: "Old Town Road",
-      artist: "Lil Nas X ft. Billy Ray Cyrus",
-      album: "7",
-      duration_ms: 157066,
-      popularity: 84,
+      id: "vyDfz9H3bm0",
+      name: "One Love",
+      artist: "Blue",
+      album: "One Love",
+      img:"https://i1.sndcdn.com/artworks-hIzigGXGwFqI-0-t500x500.jpg",
+
+      duration_ms: 203160,
+      popularity: 55,
+      src:"./One Love.mp3",
+      liked: false,
     },
+    
     {
-      id: "3tjFYV6RSFtuktYl3ZtYcq",
-      name: "Levitating (feat. DaBaby)",
-      artist: "Dua Lipa",
-      album: "Future Nostalgia",
-      duration_ms: 203064,
-      popularity: 95,
+      id: "ESvP8TC21G0",
+      name: "Every Breath You Take",
+      artist: "The Police",
+      album: "Synchronicity",
+      img:"https://m.media-amazon.com/images/I/71owz-N614L._UF1000,1000_QL80_.jpg",
+      duration_ms: 257480,
+      popularity: 83,
+      src:"./Every breath you take.mp3",
+      liked: true,
     },
   ];
-
+  const audioRef = useRef(null);
   const [topTracks, setTopTracks] = useState([""]);
   const [topArtists, setTopArtists] = useState([""]);
+  const [currentSong, setCurrentSong] = useState(()=>songs[1]);
   const [isSongPlaying, setIsSongPlaying] = useState(false);
   const [duration, setDuration] = useState("00");
   const [currentTime, setCurrentTime] = useState("00");
   const [songProgress, setSongProgress] = useState("0");
   const [sliderValue, setSliderValue] = useState("0");
-  const [isSongLooping, setIsSongLooping] = useState(false);
+  const [isSongLooping, setIsSongLooping] = useState(null);
   const [songVolume, setSongVolume] = useState("0.5");
   const [isMuted, setIsMuted] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [volumeSliderValue, setVolumeSliderValue] = useState("");
+  // const [currentAudio, setCurrentAudio] = useState(()=>new Audio(currentSong.src))
   const [likedSongs, setLikedSongs] = useState([
     // {
     //   id: "0RiRZpuVRbi7oqRdSMwhQY",
@@ -81,47 +101,21 @@ export const SpotifyProvider = ({ children }) => {
     },
   ]);
 
-  // const apiKey = process.env.REACT_APP_API_KEY;
 
-  // console.log(process.env.REACT_APP_API_KEY, "api key here");
 
-  // const fetchTopCharts = async () => {
-  //   const options = {
-  //     method: "GET",
-  //     headers: {
-  //       "X-RapidAPI-Key": `${apiKey}`,
-  //       "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
-  //     },
-  //   };
+  useEffect(()=>{
 
-  //   const params = new URLSearchParams({
-  //     ids: "4WNcduiCmDNfmTEz7JvmLv",
-  //   }).toString();
+    const audio = audioRef.current;
+    if (isSongPlaying) {
+      audio.play();
+      console.log("played");
+    } else {
+      audio.pause();
+      console.log("paused")
+    }
 
-  //   try {
-  //     const response = await fetch(
-  //       `https://spotify23.p.rapidapi.com/tracks/?${params}`,
-  //       options
-  //     );
-
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! status: ${response.status}`);
-  //     }
-
-  //     const data = await response.json();
-  //     setTopTracks(data.tracks);
-  //   } catch (error) {
-  //     console.error(`Error fetching top charts: ${error}`);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchTopCharts();
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log(topTracks);
-  // }, [topTracks]);
+    console.log(currentSong, "from current song useEffect hook")
+  }, [currentSong, isSongPlaying]);
 
   const getSong = (id) => {
     const data = songs.find((song) => song.id === id);
@@ -129,13 +123,23 @@ export const SpotifyProvider = ({ children }) => {
     return data;
   };
 
+  const handlePlayPause = () => {
+    setIsSongPlaying(!isSongPlaying);
+  }
+
+
   // console.log(getSong("5aAx2yezTd8zXrkmtKl66Z"));
+
+  console.log(isSongPlaying, "isSongPlaying?");
 
   return (
     <SpotifyContext.Provider
       value={{
         topArtists,
         topTracks,
+        songs,
+        currentSong,
+        setCurrentSong,
         isSongPlaying,
         setIsSongPlaying,
         duration,
@@ -159,6 +163,9 @@ export const SpotifyProvider = ({ children }) => {
         likedSongs,
         setLikedSongs,
         getSong,
+        audioRef,
+        handlePlayPause
+       
       }}
     >
       {children}

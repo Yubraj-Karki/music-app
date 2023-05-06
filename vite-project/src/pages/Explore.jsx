@@ -1,4 +1,9 @@
 import React, { useContext } from "react";
+
+import { RiHeadphoneFill } from "react-icons/ri";
+
+import { SpotifyContext } from "../../context";
+
 import {
   ArtistCard,
   Searchbar,
@@ -9,11 +14,11 @@ import {
   Control,
 } from "../components/index";
 
-import { RiHeadphoneFill } from "react-icons/ri";
 
-import { SpotifyContext } from "../../context";
 
 const Explore = () => {
+  const { songs} = useContext(SpotifyContext);
+  
   // const { topTracks } = useContext(SpotifyContext);
   return (
     <div>
@@ -39,22 +44,12 @@ const Explore = () => {
           <div className="top-songs">
             <SectionTitle title="top songs" />
             <div className="grid sm:grid-cols-1 ">
-              <Song
-                img="https://images.pexels.com/photos/894156/pexels-photo-894156.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                id="5aAx2yezTd8zXrkmtKl66Z"
-              />
-              <Song
-                img="https://images.pexels.com/photos/3693108/pexels-photo-3693108.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                id="456"
-              />
-              <Song
-                img="https://images.pexels.com/photos/1644616/pexels-photo-1644616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                id="330"
-              />
-              <Song
-                img="https://images.pexels.com/photos/3310871/pexels-photo-3310871.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                id="54gh"
-              />
+              {
+                songs.map((song, index)=> {
+                  const {id, name, artist, albumb, duration, img} = song;
+                  return <Song key={id} {...song} index={index} />
+                })
+              }
             </div>
           </div>
           <div className="">

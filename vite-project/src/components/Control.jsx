@@ -10,6 +10,8 @@ import { SpotifyContext } from "../../context";
 
 const Control = () => {
   const {
+    currentSong,
+    setCurrentSong,
     isSongPlaying,
     setIsSongPlaying,
     duration,
@@ -30,9 +32,11 @@ const Control = () => {
     setIsMuted,
     isLiked,
     setIsLiked,
+    handlePlayPause,
+    audioRef
+
   } = useContext(SpotifyContext);
 
-  const audioRef = useRef(null);
   const sliderRef = useRef(null);
   const sliderContainerRef = useRef(null);
 
@@ -96,16 +100,8 @@ const Control = () => {
     };
   }, [isSongLooping]);
 
-  const togglePlay = () => {
-    const audio = audioRef.current;
 
-    if (isSongPlaying) {
-      audio.pause();
-    } else {
-      audio.play();
-    }
-    setIsSongPlaying(!isSongPlaying);
-  };
+
 
   const formatTime = (duration) => {
     const date = new Date(duration * 1000);
@@ -168,6 +164,8 @@ const Control = () => {
     console.log(isMuted, "bottom");
   };
 
+
+
   return (
     <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-10 pt-5 pb-5">
       <div
@@ -192,15 +190,15 @@ const Control = () => {
         <div className="flex items-center justify-between justify-self-start w-[81%]">
           <div className="song-img-container max-h-[47.33px] w-[56.52px]  rounded-[3px] overflow-hidden">
             <img
-              src="https://images.pexels.com/photos/3310871/pexels-photo-3310871.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src={currentSong.src}
               alt=""
             />
-            <audio ref={audioRef} src={SongSrc} />
+            <audio ref={audioRef} src={currentSong.src} />
           </div>
           <div className="song-title">
-            <h3 className="text-[13px] font-bold">Whole Lotta Love</h3>
+            <h3 className="text-[13px] font-bold">{currentSong.name}</h3>
             <p className="text-[10px] font-normal text-[#BABABA]">
-              Led Zeppelin
+              {currentSong.album}
             </p>
           </div>
           <div
@@ -230,9 +228,9 @@ const Control = () => {
           <RxTrackPrevious className="cursor-pointer ml-[20px]" />
           <span className="cursor-pointer flex justify-center items-center h-[40px] w-[40px] bg-[#fff] text-black rounded-full">
             {isSongPlaying ? (
-              <CiPause1 onClick={togglePlay} />
+              <CiPause1 onClick={handlePlayPause} />
             ) : (
-              <CiPlay1 onClick={togglePlay} />
+              <CiPlay1 onClick={handlePlayPause} />
             )}
           </span>
           <RxTrackNext className="cursor-pointer mr-[20px]" />

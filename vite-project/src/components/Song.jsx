@@ -5,8 +5,8 @@ import { SpotifyContext } from "../../context";
 
 import { FaPlay } from "react-icons/fa";
 
-const Song = ({ img, id }) => {
-  const { likedSongs, setLikedSongs, getSong } = useContext(SpotifyContext);
+const Song = ({ id, name, artist, album, duration, img, index }) => {
+  const { likedSongs, setLikedSongs, getSong, currentSong, setCurrentSong, isSongPlaying, setIsSongPlaying, handlePlayPause } = useContext(SpotifyContext);
 
   const handleLike = (id) => {
     const clickedSong = getSong(id);
@@ -32,15 +32,27 @@ const Song = ({ img, id }) => {
 
       console.log(updatedLikedSongs, "updatedLikedSongs");
     }
+
   };
 
-  console.log(likedSongs, "here are your liked songs");
+  const handleSongPlay = (id) => {
+    const clickedSong = getSong(id);
+    setCurrentSong(clickedSong);
+
+    handlePlayPause();
+
+    console.log(clickedSong)
+    // setIsSongPlaying(true);
+  }
+
 
   return (
-    <div className="group flex flex-row items-center justify-start justify-between mx-auto mb-[25px] p-[9px] hover:bg-[#19177F] w-full">
-      <p>1</p>
-      <div className="hidden md:block relative cursor-pointer song-img-container max-h-[47.33px] my-[0px] mx-[0px] w-[56.52px] overflow-hidden">
-        <FaPlay className="absolute opacity-0 text-white text-[20px] top-[30%] left-[30%] group-hover:opacity-100 z-20" />
+    <div className="group grid grid-cols-7 gap-2 mx-auto mb-[25px] p-[9px] hover:bg-[#19177F] w-full">
+      <p className="col-span-0.3">{index+1}</p>
+      <div className="hidden col-start-1.2 col-span-1 md:block relative cursor-pointer song-img-container max-h-[47.33px] my-[0px] mx-[0px] w-[56.52px] overflow-hidden">
+        <FaPlay  onClick={() => {
+          handleSongPlay(id);
+        }} className="absolute opacity-0 text-white text-[20px] top-[30%] left-[30%] group-hover:opacity-100 z-20" />
 
         <img
           className="object-cover z-10 group-hover:opacity-60"
@@ -49,11 +61,11 @@ const Song = ({ img, id }) => {
         />
       </div>
       <div className="song-title">
-        <h3 className="text-[13px] font-bold">Whole Lotta Love</h3>
-        <p className="text-[10px] font-normal text-[#BABABA]">Led Zeppelin</p>
+        <h3 className="text-[13px] font-bold">{name}</h3>
+        <p className="text-[10px] font-normal text-[#BABABA]">{artist}</p>
       </div>
       <h3 className="album hidden md:block  text-[12px] font-normal text-[#BABABA]">
-        Whole Lotta Love
+        {album}
       </h3>
       <p className="song-length text-[12px] font-normal text-[#BABABA]">5:36</p>
       <span
