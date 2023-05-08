@@ -190,7 +190,7 @@ const Control = () => {
         <div className="flex items-center justify-between justify-self-start w-[81%]">
           <div className="song-img-container max-h-[47.33px] w-[56.52px]  rounded-[3px] overflow-hidden">
             <img
-              src={currentSong.src}
+              src={currentSong.img}
               alt=""
             />
             <audio ref={audioRef} src={currentSong.src} />

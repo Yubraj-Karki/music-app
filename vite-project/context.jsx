@@ -23,7 +23,7 @@ export const SpotifyProvider = ({ children }) => {
       name: "Sadeness - Part I",
       artist: "Enigma",
       album: "MCMXC a.D.",
-      img:"https://i.ytimg.com/vi/AiIBKcd4m5Q/mqdefault.jpg",
+      img:"https://m.media-amazon.com/images/M/MV5BMzVmMzVmNzUtM2ZlZS00ZTYyLWIyN2UtYmMxMjg1NTEyNjRhXkEyXkFqcGdeQXVyMTE3MjAyODEz._V1_.jpg",
 
       duration_ms: 265573,
       popularity: 68,
