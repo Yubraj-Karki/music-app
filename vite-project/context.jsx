@@ -114,6 +114,7 @@ export const SpotifyProvider = ({ children }) => {
       console.log("paused")
     }
 
+
     console.log(currentSong, "from current song useEffect hook")
   }, [currentSong, isSongPlaying]);
 
@@ -124,13 +125,12 @@ export const SpotifyProvider = ({ children }) => {
   };
 
   const handlePlayPause = () => {
-    setIsSongPlaying(!isSongPlaying);
+      setIsSongPlaying(!isSongPlaying);
   }
 
 
   // console.log(getSong("5aAx2yezTd8zXrkmtKl66Z"));
 
-  console.log(isSongPlaying, "isSongPlaying?");
 
   return (
     <SpotifyContext.Provider

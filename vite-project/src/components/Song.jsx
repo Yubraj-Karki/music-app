@@ -37,12 +37,12 @@ const Song = ({ id, name, artist, album, duration, img, index }) => {
 
   const handleSongPlay = (id) => {
     const clickedSong = getSong(id);
-    setCurrentSong(clickedSong);
-
-    handlePlayPause();
-
-    console.log(clickedSong)
-    // setIsSongPlaying(true);
+    if(currentSong.id===id) {
+      handlePlayPause()
+    } else {
+      setCurrentSong(clickedSong);
+      setIsSongPlaying(true);
+    }
   }
 
 
