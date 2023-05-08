@@ -39,7 +39,7 @@ a {
 
 /* Setting width and margin and padding for container. Using this class to wrap almost every components */
 .container {
-  max-width: 89%;
+  max-width: 95%;
   height: 100%;
   margin: 0 auto;
   padding: 35px 10px;
