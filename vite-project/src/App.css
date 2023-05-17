@@ -108,3 +108,12 @@ input[type="range"]::-moz-range-thumb {
 input[type="range"]::-moz-range-track {
   background-color: red;
 } */
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
+}

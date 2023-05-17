@@ -189,11 +189,12 @@ const Control = () => {
       </div>
 
       <div className="grid grid-cols-3 justify-items-center items-center ">
-        <div className="flex items-center justify-between justify-self-start w-[81%]">
-          <div className="song-img-container max-h-[47.33px] w-[56.52px]  rounded-[3px] overflow-hidden">
+        <div className=" flex items-center justify-between justify-self-start w-[89%]">
+          <div className="relative song-img-container h-[47.33px] w-[56.52px] mr-[6px] rounded-[3px] overflow-hidden">
             <img
               src={currentSong.img}
               alt=""
+              className="absolute animate-spin-slow w-full h-full  object-cover"
             />
             <audio ref={audioRef} src={currentSong.src} />
           </div>
