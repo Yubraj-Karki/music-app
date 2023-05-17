@@ -81,24 +81,24 @@ export const SpotifyProvider = ({ children }) => {
     //   popularity: 100,
     //   liked: true,
     // },
-    {
-      id: "7MAibcTli4IisCtbHKrGMh",
-      name: "Leave The Door Open",
-      artist: "Silk Sonic",
-      album: "An Evening with Silk Sonic",
-      duration_ms: 242096,
-      popularity: 98,
-      liked: true,
-    },
-    {
-      id: "2MbdDtCv5LUVjYy9RuGTgC",
-      name: "Save Your Tears (with Ariana Grande) (Remix)",
-      artist: "The Weeknd, Ariana Grande",
-      album: "The Highlights",
-      duration_ms: 215626,
-      popularity: 99,
-      liked: true,
-    },
+    // {
+    //   id: "7MAibcTli4IisCtbHKrGMh",
+    //   name: "Leave The Door Open",
+    //   artist: "Silk Sonic",
+    //   album: "An Evening with Silk Sonic",
+    //   duration_ms: 242096,
+    //   popularity: 98,
+    //   liked: true,
+    // },
+    // {
+    //   id: "2MbdDtCv5LUVjYy9RuGTgC",
+    //   name: "Save Your Tears (with Ariana Grande) (Remix)",
+    //   artist: "The Weeknd, Ariana Grande",
+    //   album: "The Highlights",
+    //   duration_ms: 215626,
+    //   popularity: 99,
+    //   liked: true,
+    // },
   ]);
 
 
@@ -127,6 +127,33 @@ export const SpotifyProvider = ({ children }) => {
   const handlePlayPause = () => {
       setIsSongPlaying(!isSongPlaying);
   }
+
+  const handleLike = (id) => {
+    const clickedSong = getSong(id);
+
+    console.log(clickedSong, "clickedSong");
+
+    const isSongAvailable = likedSongs.some(
+      (likedSong) => clickedSong.id === likedSong.id
+    );
+
+    console.log(isSongAvailable, "is available");
+
+    // If song is already not in the likedSongs array, add song to the list
+    if (!isSongAvailable) {
+      setLikedSongs([...likedSongs, clickedSong]);
+      console.log("liked song state updated");
+    } else {
+      const temp = [...likedSongs];
+      const updatedLikedSongs = temp.filter(
+        (song) => song.id !== clickedSong.id
+      );
+      setLikedSongs(updatedLikedSongs);
+
+      console.log(updatedLikedSongs, "updatedLikedSongs");
+    }
+
+  };
 
 
   // console.log(getSong("5aAx2yezTd8zXrkmtKl66Z"));
@@ -164,7 +191,8 @@ export const SpotifyProvider = ({ children }) => {
         setLikedSongs,
         getSong,
         audioRef,
-        handlePlayPause
+        handlePlayPause,
+        handleLike
        
       }}
     >

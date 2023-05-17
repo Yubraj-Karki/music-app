@@ -33,7 +33,9 @@ const Control = () => {
     isLiked,
     setIsLiked,
     handlePlayPause,
-    audioRef
+    audioRef,
+    handleLike,
+    likedSongs
 
   } = useContext(SpotifyContext);
 
@@ -202,14 +204,22 @@ const Control = () => {
             </p>
           </div>
           <div
-            onClick={() => setIsLiked(!isLiked)}
+            onClick={() => handleLike(currentSong.id)}
             className="cursor-pointer text-[21px] font-normal text-[#BABABA]"
           >
-            {isLiked ? (
+            {/* {isLiked ? (
               <AiFillHeart style={{ color: "red" }} />
             ) : (
               <AiOutlineHeart />
-            )}
+            )} */}
+
+            
+
+     {/* {likedSongs.find((song)=>song.id==currentSong.id) && likedSongs[index]?<AiFillHeart style={{ color: "red" }} />: <AiOutlineHeart />} */}
+
+     {likedSongs && likedSongs.some((song)=>song.id===currentSong.id)?<AiFillHeart style={{ color: "red" }} />: <AiOutlineHeart />}
+
+
           </div>
           <p className="ml-[15%] text-[12px] text-[#BABABA]">
             {formatTime(currentTime)}-{formatTime(duration)}

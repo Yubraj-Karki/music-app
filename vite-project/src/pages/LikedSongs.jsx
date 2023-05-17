@@ -12,9 +12,9 @@ const LikedSongs = () => {
     <div>
       {/* <PageTitle title="Liked Songs" icon={RiHeadphoneFill} /> */}
       <Banner />
-      {likedSongs.map((song) => {
-        const { id, name, artist, album, img } = song;
-        return <Song {...song} />;
+      {likedSongs.map((song, index) => {
+        const { id, name, artist, album, img} = song;
+        return <Song {...song} index={index}/>;
       })}
     </div>
   );
