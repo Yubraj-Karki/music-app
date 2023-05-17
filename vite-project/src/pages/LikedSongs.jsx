@@ -13,7 +13,7 @@ const LikedSongs = () => {
       {/* <PageTitle title="Liked Songs" icon={RiHeadphoneFill} /> */}
       <Banner />
       {likedSongs.length === 0 ? (
-  <h1 className="text-center font-bold text-[20px]">Uh-oh! No songs liked yet</h1>
+  <h1 className="text-center font-medium text-italic text-[20px]">Uh-oh! No songs liked yet</h1>
 ) : (
   likedSongs.map((song, index) => {
     const { id, name, artist, album, img } = song;
