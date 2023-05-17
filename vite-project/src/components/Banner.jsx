@@ -1,7 +1,18 @@
-import React from "react";
+import React, {  useContext } from "react";
+import { SpotifyContext } from "../../context";
+
 import { AiFillHeart } from "react-icons/ai";
+import { CiPlay1, CiPause1, CiVolumeHigh, CiVolumeMute } from "react-icons/ci";
+
 
 const Banner = () => {
+  const {
+ 
+    isSongPlaying,
+    handlePlayPause
+  
+
+  } = useContext(SpotifyContext);
   return (
     <div className="bg-[#0C0B39] mt-[40px] mb-[40px] w-[100%] p-[20px] flex  items-center justify-center  justify-between">
       <div className="">
@@ -19,7 +30,16 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <div>play</div>
+      <div>
+
+      <span className="cursor-pointer flex justify-center items-center h-[40px] w-[40px] bg-[#fff] text-black rounded-full">
+            {isSongPlaying ? (
+              <CiPause1 onClick={handlePlayPause} />
+            ) : (
+              <CiPlay1 onClick={handlePlayPause} />
+            )}
+      </span>
+      </div>
     </div>
   );
 };

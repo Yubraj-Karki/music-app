@@ -32,7 +32,7 @@ const Song = ({ id, name, artist, album, duration, img, index}) => {
       <FaPlay  onClick={() => {
         handleSongPlay(id);
       }} className="absolute opacity-0 text-white text-[20px] top-[30%] left-[30%] group-hover:opacity-100 z-20" />
-
+      
       <img
         className="object-cover z-10 group-hover:opacity-60"
         src={img}
