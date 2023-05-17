@@ -3,7 +3,7 @@ import { AiFillHeart } from "react-icons/ai";
 
 const Banner = () => {
   return (
-    <div className="bg-[#0C0B39] mt-[40px] w-[100%] p-[20px] flex  items-center justify-center  justify-between">
+    <div className="bg-[#0C0B39] mt-[40px] mb-[40px] w-[100%] p-[20px] flex  items-center justify-center  justify-between">
       <div className="">
         <div className="flex items-center gap-5">
           <div className="box flex items-center justify-center h-[144px] w-[147px] bg-[#1B1BB5] text-[85px]">

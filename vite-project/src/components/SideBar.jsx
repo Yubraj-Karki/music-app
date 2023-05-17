@@ -21,7 +21,7 @@ const SideBar = () => {
             Explore
           </li>
         </Link>
-        <Link to="/artists">
+        {/* <Link to="/artists">
           <li>
             <MdHeadphones />
             Artists
@@ -31,7 +31,7 @@ const SideBar = () => {
           <li>
             <IoAlbumsOutline /> Albums
           </li>
-        </Link>
+        </Link> */}
         <Link to="/playlist">
           <li>
             <TbPlaylist /> Playlist
