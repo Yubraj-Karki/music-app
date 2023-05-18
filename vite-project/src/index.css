@@ -5,7 +5,7 @@
 .menus {
   margin-top: 20px;
 }
-.menus li {
+.menus li a {
   margin: 15px 0px;
   /* padding: 9px; */
   display: flex;
@@ -52,4 +52,10 @@
   aside {
     display: block !important;
   }
+}
+
+.active {
+  background-color: #1b1bb5;
+  cursor: pointer;
+  border-radius: 5px;
 }

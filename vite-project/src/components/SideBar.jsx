@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { RiCompassDiscoverLine } from "react-icons/ri";
 import { GiMicrophone } from "react-icons/gi";
 import { IoAlbumsOutline } from "react-icons/io5";
@@ -15,33 +15,33 @@ const SideBar = () => {
         <h3 className="font-bold text-[18px]">MUSIXBOX</h3>
       </div>
       <ul className="menus text-[16px]">
-        <Link to="/">
-          <li>
+        <li>
+          <NavLink activeClassName="active" exact to="/">
             <MdOutlineTravelExplore />
             Explore
-          </li>
-        </Link>
-        {/* <Link to="/artists">
-          <li>
+          </NavLink>
+        </li>
+        {/* <li>
+          <NavLink to="/artists">
             <MdHeadphones />
             Artists
-          </li>
-        </Link>
-        <Link to="/albums">
-          <li>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/albums">
             <IoAlbumsOutline /> Albums
-          </li>
-        </Link> */}
-        <Link to="/playlist">
-          <li>
+          </NavLink>
+        </li> */}
+        <li>
+          <NavLink to="/playlist" activeClassName="active">
             <TbPlaylist /> Playlist
-          </li>
-        </Link>
-        <Link to="/likedSongs">
-          <li>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/likedSongs" activeClassName="active">
             <AiFillHeart /> Liked songs
-          </li>
-        </Link>
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
