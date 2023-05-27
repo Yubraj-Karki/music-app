@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useContext } from "react";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { ImPause2, ImShuffle, ImLoop } from "react-icons/im";
-import { RxTrackNext, RxTrackPrevious } from "react-icons/rx";
-import { CiPlay1, CiPause1, CiVolumeHigh, CiVolumeMute } from "react-icons/ci";
+import React, { useContext, useEffect, useRef } from "react";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { CgPlayListAdd } from "react-icons/cg";
-import SongSrc from "/song.mp3";
+import { CiPause1, CiPlay1, CiVolumeHigh, CiVolumeMute } from "react-icons/ci";
+import { ImLoop, ImShuffle } from "react-icons/im";
+import { RxTrackNext, RxTrackPrevious } from "react-icons/rx";
 
 import { SpotifyContext } from "../../context";
 
@@ -35,8 +34,7 @@ const Control = () => {
     handlePlayPause,
     audioRef,
     handleLike,
-    likedSongs
-
+    likedSongs,
   } = useContext(SpotifyContext);
 
   const sliderRef = useRef(null);
@@ -102,9 +100,6 @@ const Control = () => {
     };
   }, [isSongLooping]);
 
-
-
-
   const formatTime = (duration) => {
     const date = new Date(duration * 1000);
     const minutes = date.getUTCMinutes().toString().padStart(2, "0");
@@ -166,8 +161,6 @@ const Control = () => {
     console.log(isMuted, "bottom");
   };
 
-
-
   return (
     <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-10 pt-5 pb-5">
       <div
@@ -214,13 +207,14 @@ const Control = () => {
               <AiOutlineHeart />
             )} */}
 
-            
+            {/* {likedSongs.find((song)=>song.id==currentSong.id) && likedSongs[index]?<AiFillHeart style={{ color: "red" }} />: <AiOutlineHeart />} */}
 
-     {/* {likedSongs.find((song)=>song.id==currentSong.id) && likedSongs[index]?<AiFillHeart style={{ color: "red" }} />: <AiOutlineHeart />} */}
-
-     {likedSongs && likedSongs.some((song)=>song.id===currentSong.id)?<AiFillHeart style={{ color: "red" }} />: <AiOutlineHeart />}
-
-
+            {likedSongs &&
+            likedSongs.some((song) => song.id === currentSong.id) ? (
+              <AiFillHeart style={{ color: "red" }} />
+            ) : (
+              <AiOutlineHeart />
+            )}
           </div>
           <p className="ml-[15%] text-[12px] text-[#BABABA]">
             {formatTime(currentTime)}-{formatTime(duration)}
@@ -248,8 +242,22 @@ const Control = () => {
           <ImShuffle className="cursor-pointer text-[20px]" />
         </div>
         <div className="text-[25px] justify-self-end">
-          <div className="flex items-center">
+          <div className="flex items-center relative">
             <CgPlayListAdd className="cursor-pointer" />
+            <div className="bg-[#1b1bb5] absolute rounded-[7px] shadow-lg top-[-60px] text-[13px]">
+              <div className="relative group">
+                <button className="px-[10px] py-[5px]">Add to playlist</button>
+
+                <div className="group-hover:flex bg-[#1b1bb5] align-items-start  hidden flex-col  absolute rounded-[7px] left-[-150px] shadow-lg top-[-80px]">
+                  <button className="p-[5px]">Create playlist</button>
+                  <button className="p-[5px]">Add to Playlist #1</button>
+                  <button className="p-[5px]">Add to Playlist #2</button>
+                </div>
+              </div>
+              <button className="px-[10px] py-[15px]">
+                Save to your liked songs
+              </button>
+            </div>
             <div className="flex justify-center items-center">
               <div onClick={toggleMute}>
                 {isMuted ? (
