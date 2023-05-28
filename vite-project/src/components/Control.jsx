@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { CgPlayListAdd } from "react-icons/cg";
 import { CiPause1, CiPlay1, CiVolumeHigh, CiVolumeMute } from "react-icons/ci";
@@ -36,6 +36,8 @@ const Control = () => {
     handleLike,
     likedSongs,
   } = useContext(SpotifyContext);
+
+  const [isAddToPlayListBtnOpen, setIsAddToPlayListBtnOpen] = useState(false);
 
   const sliderRef = useRef(null);
   const sliderContainerRef = useRef(null);
@@ -243,10 +245,17 @@ const Control = () => {
         </div>
         <div className="text-[25px] justify-self-end">
           <div className="flex items-center relative">
-            <CgPlayListAdd className="cursor-pointer" />
-            <div className="bg-[#1b1bb5] absolute rounded-[7px] shadow-lg top-[-60px] text-[13px]">
-              <div className="relative group">
-                <button className="hover:bg-[#0000ff] w-[100%] text-left  px-[10px] py-[5px]">
+            <CgPlayListAdd
+              onClick={() => setIsAddToPlayListBtnOpen(!isAddToPlayListBtnOpen)}
+              className="cursor-pointer"
+            />
+            <div
+              className={`${
+                isAddToPlayListBtnOpen ? "block" : "hidden"
+              }  bg-[#1b1bb5] absolute rounded-[7px] shadow-lg top-[-60px] text-[13px]`}
+            >
+              <div className="relative group ">
+                <button className="hover:bg-[#0000ff]  w-[100%] text-left  px-[10px] py-[5px]">
                   Add to playlist
                 </button>
 
