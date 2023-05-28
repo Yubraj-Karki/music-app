@@ -246,15 +246,23 @@ const Control = () => {
             <CgPlayListAdd className="cursor-pointer" />
             <div className="bg-[#1b1bb5] absolute rounded-[7px] shadow-lg top-[-60px] text-[13px]">
               <div className="relative group">
-                <button className="px-[10px] py-[5px]">Add to playlist</button>
+                <button className="hover:bg-[#0000ff] w-[100%] text-left  px-[10px] py-[5px]">
+                  Add to playlist
+                </button>
 
-                <div className="group-hover:flex bg-[#1b1bb5] align-items-start  hidden flex-col  absolute rounded-[7px] left-[-150px] shadow-lg top-[-80px]">
-                  <button className="p-[5px]">Create playlist</button>
-                  <button className="p-[5px]">Add to Playlist #1</button>
-                  <button className="p-[5px]">Add to Playlist #2</button>
+                <div className="w-[130px] text-left group-hover:block bg-[#1b1bb5] align-items-start hidden flex-col absolute rounded-[7px] right-[100%] shadow-lg bottom-[-100%]">
+                  <button className="px-[10px] py-[5px] w-[100%] text-left hover:bg-[#0000ff]">
+                    Create playlist
+                  </button>
+                  <button className="px-[10px] w-[100%] py-[5px] hover:bg-[#0000ff]">
+                    Add to Playlist #1
+                  </button>
+                  <button className="px-[10px] w-[100%] py-[5px] hover:bg-[#0000ff]">
+                    Add to Playlist #2
+                  </button>
                 </div>
               </div>
-              <button className="px-[10px] py-[15px]">
+              <button className="px-[10px] py-[5px] hover:bg-[#0000ff]">
                 Save to your liked songs
               </button>
             </div>
