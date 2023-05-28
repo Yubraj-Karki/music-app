@@ -1,12 +1,18 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { SideBar, Control, Searchbar, User, PageTitle } from "./components";
-import { Explore, Artists, Albums, PlayList, LikedSongs } from "./pages";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  Control,
+  CreatePlaylist,
+  Searchbar,
+  SideBar,
+  User,
+} from "./components";
+import { Albums, Artists, Explore, LikedSongs, PlayList } from "./pages";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="wrapper h-[140vh] ">
+      <div className="wrapper h-[140vh] relative ">
         <aside className="relative h-screen hidden">
           <SideBar />
         </aside>
@@ -33,8 +39,8 @@ const App = () => {
           <section>
             <Control />
           </section>
-
         </main>
+        <CreatePlaylist />
       </div>
     </BrowserRouter>
   );
