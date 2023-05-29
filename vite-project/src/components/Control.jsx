@@ -35,6 +35,8 @@ const Control = () => {
     audioRef,
     handleLike,
     likedSongs,
+    isCreatePlaylistOpen,
+    setIsCreatePlaylistOpen,
   } = useContext(SpotifyContext);
 
   const [isAddToPlayListBtnOpen, setIsAddToPlayListBtnOpen] = useState(false);
@@ -260,7 +262,10 @@ const Control = () => {
                 </button>
 
                 <div className="w-[130px] text-left group-hover:block bg-[#1b1bb5] align-items-start hidden flex-col absolute rounded-[7px] right-[100%] shadow-lg bottom-[-100%]">
-                  <button className="px-[10px] py-[5px] w-[100%] text-left hover:bg-[#0000ff]">
+                  <button
+                    onClick={() => setIsCreatePlaylistOpen(true)}
+                    className="px-[10px] py-[5px] w-[100%] text-left hover:bg-[#0000ff]"
+                  >
                     Create playlist
                   </button>
                   <button className="px-[10px] w-[100%] py-[5px] hover:bg-[#0000ff]">
