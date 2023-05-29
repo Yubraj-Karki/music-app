@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 export const SpotifyContext = React.createContext();
-import env from "react-dotenv";
 
 export const SpotifyProvider = ({ children }) => {
   const songs = [
@@ -9,57 +8,56 @@ export const SpotifyProvider = ({ children }) => {
       name: "I Love You Baby",
       artist: "Frank Sinatra",
       album: "Nothing But The Best",
-      img:"https://i.ytimg.com/vi/AiIBKcd4m5Q/mqdefault.jpg",
+      img: "https://i.ytimg.com/vi/AiIBKcd4m5Q/mqdefault.jpg",
 
       duration_ms: 155506,
       popularity: 76,
-      src:"./I love you baby.mp3",
+      src: "./I love you baby.mp3",
       liked: false,
-      
     },
-    
+
     {
       id: "4eLPdQCvCV4PQBzMzNkxbD",
       name: "Sadeness - Part I",
       artist: "Enigma",
       album: "MCMXC a.D.",
-      img:"https://m.media-amazon.com/images/M/MV5BMzVmMzVmNzUtM2ZlZS00ZTYyLWIyN2UtYmMxMjg1NTEyNjRhXkEyXkFqcGdeQXVyMTE3MjAyODEz._V1_.jpg",
+      img: "https://m.media-amazon.com/images/M/MV5BMzVmMzVmNzUtM2ZlZS00ZTYyLWIyN2UtYmMxMjg1NTEyNjRhXkEyXkFqcGdeQXVyMTE3MjAyODEz._V1_.jpg",
 
       duration_ms: 265573,
       popularity: 68,
-      src:"./Sadeness.mp3",
+      src: "./Sadeness.mp3",
       liked: true,
     },
-    
+
     {
       id: "vyDfz9H3bm0",
       name: "One Love",
       artist: "Blue",
       album: "One Love",
-      img:"https://i1.sndcdn.com/artworks-hIzigGXGwFqI-0-t500x500.jpg",
+      img: "https://i1.sndcdn.com/artworks-hIzigGXGwFqI-0-t500x500.jpg",
 
       duration_ms: 203160,
       popularity: 55,
-      src:"./One Love.mp3",
+      src: "./One Love.mp3",
       liked: false,
     },
-    
+
     {
       id: "ESvP8TC21G0",
       name: "Every Breath You Take",
       artist: "The Police",
       album: "Synchronicity",
-      img:"https://m.media-amazon.com/images/I/71owz-N614L._UF1000,1000_QL80_.jpg",
+      img: "https://m.media-amazon.com/images/I/71owz-N614L._UF1000,1000_QL80_.jpg",
       duration_ms: 257480,
       popularity: 83,
-      src:"./Every breath you take.mp3",
+      src: "./Every breath you take.mp3",
       liked: true,
     },
   ];
   const audioRef = useRef(null);
   const [topTracks, setTopTracks] = useState([""]);
   const [topArtists, setTopArtists] = useState([""]);
-  const [currentSong, setCurrentSong] = useState(()=>songs[1]);
+  const [currentSong, setCurrentSong] = useState(() => songs[1]);
   const [isSongPlaying, setIsSongPlaying] = useState(false);
   const [duration, setDuration] = useState("00");
   const [currentTime, setCurrentTime] = useState("00");
@@ -71,6 +69,10 @@ export const SpotifyProvider = ({ children }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [volumeSliderValue, setVolumeSliderValue] = useState("");
   // const [currentAudio, setCurrentAudio] = useState(()=>new Audio(currentSong.src))
+
+  // playlist
+  const [isCreatePlaylistOpen, setIsCreatePlaylistOpen] = useState(false);
+
   const [likedSongs, setLikedSongs] = useState([
     // {
     //   id: "0RiRZpuVRbi7oqRdSMwhQY",
@@ -101,21 +103,17 @@ export const SpotifyProvider = ({ children }) => {
     // },
   ]);
 
-
-
-  useEffect(()=>{
-
+  useEffect(() => {
     const audio = audioRef.current;
     if (isSongPlaying) {
       audio.play();
       console.log("played");
     } else {
       audio.pause();
-      console.log("paused")
+      console.log("paused");
     }
 
-
-    console.log(currentSong, "from current song useEffect hook")
+    console.log(currentSong, "from current song useEffect hook");
   }, [currentSong, isSongPlaying]);
 
   const getSong = (id) => {
@@ -125,8 +123,8 @@ export const SpotifyProvider = ({ children }) => {
   };
 
   const handlePlayPause = () => {
-      setIsSongPlaying(!isSongPlaying);
-  }
+    setIsSongPlaying(!isSongPlaying);
+  };
 
   const handleLike = (id) => {
     const clickedSong = getSong(id);
@@ -152,12 +150,9 @@ export const SpotifyProvider = ({ children }) => {
 
       console.log(updatedLikedSongs, "updatedLikedSongs");
     }
-
   };
 
-
   // console.log(getSong("5aAx2yezTd8zXrkmtKl66Z"));
-
 
   return (
     <SpotifyContext.Provider
@@ -192,8 +187,9 @@ export const SpotifyProvider = ({ children }) => {
         getSong,
         audioRef,
         handlePlayPause,
-        handleLike
-       
+        handleLike,
+        isCreatePlaylistOpen,
+        setIsCreatePlaylistOpen,
       }}
     >
       {children}

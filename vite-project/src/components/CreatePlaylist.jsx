@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
 import { AiOutlineClose } from "react-icons/ai";
-
-const [isCreatePlaylistOpen, setIsCreatePlaylistOpen] = useState(false);
+import { SpotifyContext } from "../../context";
 
 const CreatePlaylist = () => {
+  const { isCreatePlaylistOpen, setIsCreatePlaylistOpen } =
+    useContext(SpotifyContext);
+
   return (
-    <div className="w-[100vw] h-[100vh] bg-black bg-opacity-60 z-3000 fixed top-0 left-0 flex items-center justify-center">
+    <div
+      className={`w-[100vw] h-[100vh] bg-black bg-opacity-60 z-3000 fixed top-0 left-0 ${
+        isCreatePlaylistOpen ? "flex" : "hidden"
+      } items-center justify-center`}
+    >
       <form
         action=""
         className="flex flex-col bg-indigo-800  h-auto w-[30vw]  px-[20px] py-[29px] rounded-[9px]"
