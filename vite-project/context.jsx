@@ -103,6 +103,10 @@ export const SpotifyProvider = ({ children }) => {
     // },
   ]);
 
+  const [playlist, setPlaylist] = useState([
+    { id: 1, name: "my playlist#1", songs: {} },
+  ]);
+
   useEffect(() => {
     const audio = audioRef.current;
     if (isSongPlaying) {
@@ -190,6 +194,8 @@ export const SpotifyProvider = ({ children }) => {
         handleLike,
         isCreatePlaylistOpen,
         setIsCreatePlaylistOpen,
+        playlist,
+        setPlaylist,
       }}
     >
       {children}

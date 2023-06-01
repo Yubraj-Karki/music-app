@@ -1,11 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { AiOutlineClose } from "react-icons/ai";
 import { SpotifyContext } from "../../context";
 
 const CreatePlaylist = () => {
-  const { isCreatePlaylistOpen, setIsCreatePlaylistOpen } =
-    useContext(SpotifyContext);
+  const {
+    isCreatePlaylistOpen,
+    setIsCreatePlaylistOpen,
+    playlist,
+    setPlaylist,
+  } = useContext(SpotifyContext);
+
+  const [playlistName, setPlaylistName] = useState("");
+
+  const handleCreatePlaylistSubmit = (e) => {
+    e.preventDefault();
+    const newPlaylist = {
+      id: 3,
+      name: playlistName,
+      songs: {},
+    };
+
+    setPlaylist([...playlist, newPlaylist]);
+    setPlaylistName("");
+    setIsCreatePlaylistOpen(!isCreatePlaylistOpen);
+  };
 
   return (
     <div
@@ -26,11 +45,17 @@ const CreatePlaylist = () => {
         </header>
 
         <input
+          value={playlistName}
+          onChange={(e) => setPlaylistName(e.target.value)}
           className="p-[10px] rounded-[5px] bg-indigo-600 text-white placeholder-white outline-none"
           type="text"
           placeholder="Enter playlist name"
         />
-        <button className="ml-auto font-bold text-black bg-white p-[10px] mt-[29px] w-[30%] rounded-[32px]">
+        <button
+          type="submit"
+          onClick={handleCreatePlaylistSubmit}
+          className="ml-auto font-bold text-black bg-white p-[10px] mt-[29px] w-[30%] rounded-[32px]"
+        >
           Save
         </button>
       </form>
