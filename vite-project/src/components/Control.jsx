@@ -166,7 +166,7 @@ const Control = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-10 pt-5 pb-5">
+    <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-4  sm:p-5">
       <div
         ref={sliderContainerRef}
         className="slider absolute top-0 left-0 right-0 h-[3px] bg-white"
@@ -185,8 +185,9 @@ const Control = () => {
         />
       </div>
 
-      <div className="grid grid-cols-3 justify-items-center items-center ">
-        <div className=" flex items-center justify-between justify-self-start w-[89%]">
+      <div className="grid grid-cols-4 sm:grid-cols-3 justify-items-center items-center ">
+        <div className="flex col-span-3 sm:col-span-1 items-center justify-between justify-self-start w-[89%]">
+          {/* song image */}
           <div className="relative song-img-container h-[47.33px] w-[56.52px] mr-[6px] rounded-[3px] overflow-hidden">
             <img
               src={currentSong.img}
@@ -205,14 +206,6 @@ const Control = () => {
             onClick={() => handleLike(currentSong.id)}
             className="cursor-pointer text-[21px] font-normal text-[#BABABA]"
           >
-            {/* {isLiked ? (
-              <AiFillHeart style={{ color: "red" }} />
-            ) : (
-              <AiOutlineHeart />
-            )} */}
-
-            {/* {likedSongs.find((song)=>song.id==currentSong.id) && likedSongs[index]?<AiFillHeart style={{ color: "red" }} />: <AiOutlineHeart />} */}
-
             {likedSongs &&
             likedSongs.some((song) => song.id === currentSong.id) ? (
               <AiFillHeart style={{ color: "red" }} />
@@ -220,32 +213,43 @@ const Control = () => {
               <AiOutlineHeart />
             )}
           </div>
-          <p className="ml-[15%] text-[12px] text-[#BABABA]">
+          <p className="ml-[15%] hidden sm:block text-[12px] text-[#BABABA]">
             {formatTime(currentTime)}-{formatTime(duration)}
           </p>
         </div>
-        <div className="flex justify-items-center items-center justify-between w-[60%] text-[25px]">
-          <span style={{ color: isSongLooping && "#F5E33F" }}>
+        <div className="flex justify-self-end justify-items-center items-center justify-between sm:w-[90%] text-[25px]">
+          {/* loop button */}
+          <span
+            className=" hidden sm:block "
+            style={{ color: isSongLooping && "#F5E33F" }}
+          >
             <ImLoop
               onClick={toggleLoop}
-              className="cursor-pointer text-[20px]"
+              className="cursor-pointer md:text-[19px]"
             />
             {isSongLooping && (
               <span className="block bg-[#F5E33F] mx-auto h-[3px] w-[3px] rounded-full"></span>
             )}
           </span>
-          <RxTrackPrevious className="cursor-pointer ml-[20px]" />
-          <span className="cursor-pointer flex justify-center items-center h-[40px] w-[40px] bg-[#fff] text-black rounded-full">
+
+          {/* previous song button */}
+          <RxTrackPrevious className="cursor-pointer ml-[20px]  hidden sm:block " />
+          <span className="cursor-pointer flex justify-center items-center h-10 w-10 bg-[#fff] text-black rounded-full">
+            {/* play/pause button based on state */}
             {isSongPlaying ? (
               <CiPause1 onClick={handlePlayPause} />
             ) : (
               <CiPlay1 onClick={handlePlayPause} />
             )}
           </span>
-          <RxTrackNext className="cursor-pointer mr-[20px]" />
-          <ImShuffle className="cursor-pointer text-[20px]" />
+
+          {/* next song button */}
+          <RxTrackNext className="cursor-pointer mr-[20px]  hidden sm:block " />
+
+          {/* shuffle button */}
+          <ImShuffle className="cursor-pointer text-[20px]  hidden sm:block " />
         </div>
-        <div className="text-[25px] justify-self-end">
+        <div className="text-[25px] hidden sm:block justify-self-end md:w-[50%] lg:w-auto">
           <div className="flex items-center relative">
             <CgPlayListAdd
               onClick={() => setIsAddToPlayListBtnOpen(!isAddToPlayListBtnOpen)}
@@ -302,10 +306,6 @@ const Control = () => {
                   }}
                 />
               </div>
-
-              {/* <div className="relative songVolume w-[34px] h-[3px] bg-[#F5E33F]">
-                <span className="absolute right-0 top-[-3px] rounded-full w-[9px] h-[9px] bg-[#F5E33F]"></span>
-              </div> */}
             </div>
           </div>
         </div>
