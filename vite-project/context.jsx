@@ -73,6 +73,9 @@ export const SpotifyProvider = ({ children }) => {
   // playlist
   const [isCreatePlaylistOpen, setIsCreatePlaylistOpen] = useState(false);
 
+  // sidebar
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   const [likedSongs, setLikedSongs] = useState([
     // {
     //   id: "0RiRZpuVRbi7oqRdSMwhQY",
@@ -196,6 +199,8 @@ export const SpotifyProvider = ({ children }) => {
         setIsCreatePlaylistOpen,
         playlist,
         setPlaylist,
+        isSidebarOpen,
+        setIsSidebarOpen,
       }}
     >
       {children}

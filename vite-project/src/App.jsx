@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   Control,
@@ -11,9 +11,13 @@ import {
 
 import { Albums, Artists, Explore, LikedSongs, PlayList } from "./pages";
 
+import { SpotifyContext } from "../context";
+
 import { FiSettings } from "react-icons/fi";
 
 const App = () => {
+  const { setIsSidebarOpen } = useContext(SpotifyContext);
+
   return (
     <BrowserRouter>
       <div className="wrapper h-[140vh] relative ">
@@ -25,7 +29,10 @@ const App = () => {
           <ResponsiveSidebar />
 
           <header className="">
-            <FiSettings className="settings-icon mb-[5vh] ml-auto hidden" />
+            <FiSettings
+              onClick={() => setIsSidebarOpen(true)}
+              className="settings-icon mb-[5vh] ml-auto hidden"
+            />
             <div className="flex flex-col flex-col-reverse items-center justify-between md:flex-row">
               <Searchbar />
               <User
