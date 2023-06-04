@@ -16,7 +16,7 @@ import { SpotifyContext } from "../context";
 import { FiSettings } from "react-icons/fi";
 
 const App = () => {
-  const { setIsSidebarOpen } = useContext(SpotifyContext);
+  const { isSidebarOpen, setIsSidebarOpen } = useContext(SpotifyContext);
 
   return (
     <BrowserRouter>
@@ -29,10 +29,12 @@ const App = () => {
           <ResponsiveSidebar />
 
           <header className="">
-            <FiSettings
-              onClick={() => setIsSidebarOpen(true)}
-              className="settings-icon mb-[5vh] ml-auto hidden"
-            />
+            {!isSidebarOpen && (
+              <FiSettings
+                onClick={() => setIsSidebarOpen(true)}
+                className="settings-icon mb-[5vh] ml-auto hidden"
+              />
+            )}
             <div className="flex flex-col flex-col-reverse items-center justify-between md:flex-row">
               <Searchbar />
               <User
