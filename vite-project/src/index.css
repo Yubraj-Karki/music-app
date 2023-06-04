@@ -42,6 +42,10 @@
   aside {
     display: none;
   }
+
+  .settings-icon {
+    display: block;
+  }
 }
 
 @media screen and (min-width: 1244px) {

@@ -8,7 +8,10 @@ import {
   User,
   ResponsiveSidebar,
 } from "./components";
+
 import { Albums, Artists, Explore, LikedSongs, PlayList } from "./pages";
+
+import { FiSettings } from "react-icons/fi";
 
 const App = () => {
   return (
@@ -22,6 +25,7 @@ const App = () => {
           <ResponsiveSidebar />
 
           <header className="">
+            <FiSettings className="settings-icon mb-[5vh] ml-auto hidden" />
             <div className="flex flex-col flex-col-reverse items-center justify-between md:flex-row">
               <Searchbar />
               <User
