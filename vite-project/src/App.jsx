@@ -6,6 +6,7 @@ import {
   Searchbar,
   SideBar,
   User,
+  ResponsiveSidebar,
 } from "./components";
 import { Albums, Artists, Explore, LikedSongs, PlayList } from "./pages";
 
@@ -18,6 +19,8 @@ const App = () => {
         </aside>
 
         <main className="relative container ">
+          <ResponsiveSidebar />
+
           <header className="">
             <div className="flex flex-col flex-col-reverse items-center justify-between md:flex-row">
               <Searchbar />

@@ -8,6 +8,7 @@ import SectionTitle from "./SectionTitle";
 import SideBar from "./SideBar";
 import Song from "./Song";
 import User from "./User";
+import ResponsiveSidebar from "./ResponsiveSidebar";
 
 export {
   SideBar,
@@ -20,4 +21,5 @@ export {
   Control,
   Banner,
   CreatePlaylist,
+  ResponsiveSidebar,
 };
