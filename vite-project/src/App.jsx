@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className="wrapper h-[140vh] relative ">
+      <div className="wrapper h-[160vh] relative ">
         <aside className="relative h-screen hidden">
           <SideBar />
         </aside>
@@ -28,11 +28,11 @@ const App = () => {
         <main className="relative container ">
           <ResponsiveSidebar />
 
-          <header className="sticky p-5 top-0 right-0 left-0 mb-[10vh] bg-[#0C0B39] z-10">
+          <header className="sticky p-3 top-0 bg-[#0C0B39] z-10">
             {!isSidebarOpen && (
               <FiSettings
                 onClick={() => setIsSidebarOpen(true)}
-                className="settings-icon mb-[5vh] ml-auto hidden text-[25px]"
+                className="settings-icon mb-[1vh] ml-auto hidden text-[25px]"
               />
             )}
             <div className="flex flex-col flex-col-reverse items-center justify-between md:flex-row">
