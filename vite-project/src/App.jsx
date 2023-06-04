@@ -28,7 +28,7 @@ const App = () => {
         <main className="relative container ">
           <ResponsiveSidebar />
 
-          <header className="">
+          <header className="sticky p-5 top-0 right-0 left-0 mb-[10vh] bg-[#0C0B39] z-10">
             {!isSidebarOpen && (
               <FiSettings
                 onClick={() => setIsSidebarOpen(true)}

@@ -38,11 +38,11 @@ const Song = ({ id, name, artist, album, duration, img, index }) => {
           onClick={() => {
             handleSongPlay(id);
           }}
-          className="absolute opacity-0 text-white text-[20px] top-[30%] left-[30%] group-hover:opacity-100 z-20"
+          className="absolute opacity-0 text-white text-[20px] top-[30%] left-[30%] group-hover:opacity-100 z-10"
         />
 
         <img
-          className="object-cover z-10 group-hover:opacity-60"
+          className="object-cover z-7 group-hover:opacity-60"
           src={img}
           alt=""
         />

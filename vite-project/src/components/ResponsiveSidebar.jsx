@@ -15,7 +15,7 @@ const ResponsiveSidebar = () => {
     <div
       className={`responsive-side-bar fixed top-0  ${
         isSidebarOpen ? "left-0" : "left-[-100%]"
-      } bg-[#0C0B39] p-10 pt-[20px] h-screen w-[320px] text-white z-30000 transition ease-in duration-500`}
+      } bg-[#0C0B39] p-10 pt-[20px] h-screen w-[320px] text-white z-50 transition ease-in duration-500`}
     >
       <div className="logo-title flex items-center mb-[46px]">
         <img className="h-[39px] w-[39px] mr-[10px]" src="/logo.png" alt="" />
