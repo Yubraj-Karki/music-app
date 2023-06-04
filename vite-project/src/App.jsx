@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className="wrapper h-[160vh] relative ">
+      <div className="wrapper min-h-[160vh] relative ">
         <aside className="relative h-screen hidden">
           <SideBar />
         </aside>
