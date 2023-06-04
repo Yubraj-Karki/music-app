@@ -15,7 +15,7 @@ const ResponsiveSidebar = () => {
     <div
       className={`responsive-side-bar fixed top-0  ${
         isSidebarOpen ? "left-0" : "left-[-100%]"
-      } bg-[#0C0B39] p-10 pt-[20px] h-screen w-[320px] text-white z-30000`}
+      } bg-[#0C0B39] p-10 pt-[20px] h-screen w-[320px] text-white z-30000 transition ease-in duration-500`}
     >
       <div className="logo-title flex items-center mb-[46px]">
         <img className="h-[39px] w-[39px] mr-[10px]" src="/logo.png" alt="" />
@@ -30,7 +30,12 @@ const ResponsiveSidebar = () => {
       </div>
       <ul className="menus text-[16px]">
         <li>
-          <NavLink activeClassName="active" exact to="/">
+          <NavLink
+            onClick={() => setIsSidebarOpen(false)}
+            activeClassName="active"
+            exact
+            to="/"
+          >
             <MdOutlineTravelExplore />
             Explore
           </NavLink>
@@ -47,12 +52,20 @@ const ResponsiveSidebar = () => {
           </NavLink>
         </li> */}
         <li>
-          <NavLink to="/playlist" activeClassName="active">
+          <NavLink
+            onClick={() => setIsSidebarOpen(false)}
+            to="/playlist"
+            activeClassName="active"
+          >
             <TbPlaylist /> Playlist
           </NavLink>
         </li>
         <li>
-          <NavLink to="/likedSongs" activeClassName="active">
+          <NavLink
+            onClick={() => setIsSidebarOpen(false)}
+            to="/likedSongs"
+            activeClassName="active"
+          >
             <AiFillHeart /> Liked songs
           </NavLink>
         </li>

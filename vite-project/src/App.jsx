@@ -32,13 +32,13 @@ const App = () => {
             {!isSidebarOpen && (
               <FiSettings
                 onClick={() => setIsSidebarOpen(true)}
-                className="settings-icon mb-[5vh] ml-auto hidden"
+                className="settings-icon mb-[5vh] ml-auto hidden text-[25px]"
               />
             )}
             <div className="flex flex-col flex-col-reverse items-center justify-between md:flex-row">
               <Searchbar />
               <User
-                name="John Doe"
+                name="Yubraj Karki"
                 img="https://images.pexels.com/photos/13358914/pexels-photo-13358914.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               />
             </div>
