@@ -1,9 +1,17 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { CgPlayListAdd } from "react-icons/cg";
-import { CiPause1, CiPlay1, CiVolumeHigh, CiVolumeMute } from "react-icons/ci";
-import { ImLoop, ImShuffle } from "react-icons/im";
-import { RxTrackNext, RxTrackPrevious } from "react-icons/rx";
+import {
+  AiFillHeart,
+  AiOutlineHeart,
+  CgPlayListAdd,
+  CiPause1,
+  CiPlay1,
+  CiVolumeHigh,
+  CiVolumeMute,
+  ImLoop,
+  ImShuffle,
+  RxTrackNext,
+  RxTrackPrevious,
+} from "../utils/icons";
 
 import { SpotifyContext } from "../../context";
 
@@ -37,6 +45,7 @@ const Control = () => {
     likedSongs,
     isCreatePlaylistOpen,
     setIsCreatePlaylistOpen,
+    songs,
   } = useContext(SpotifyContext);
 
   const [isAddToPlayListBtnOpen, setIsAddToPlayListBtnOpen] = useState(false);
@@ -165,6 +174,22 @@ const Control = () => {
     console.log(isMuted, "bottom");
   };
 
+  let currentSongIndex = songs.findIndex(
+    (song) => song.name == currentSong.name
+  );
+
+  const playNextSong = () => {
+    let nextSong;
+    if (currentSongIndex < songs.length - 1) {
+      nextSong = songs[currentSongIndex + 1];
+    } else if (currentSongIndex === songs.length - 1) {
+      nextSong = songs[0];
+    }
+
+    console.log("next song", nextSong);
+    setCurrentSong(nextSong);
+  };
+
   return (
     <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-4  sm:p-5">
       <div
@@ -217,7 +242,7 @@ const Control = () => {
             {formatTime(currentTime)}-{formatTime(duration)}
           </p>
         </div>
-        <div className="flex justify-self-end justify-items-center items-center justify-between sm:w-[90%] text-[25px]">
+        <div className="flex justify-self-end justify-items-center items-center justify-between sm:w-[90%] md:w-[65%] text-[25px]">
           {/* loop button */}
           <span
             className=" hidden sm:block "
@@ -244,7 +269,10 @@ const Control = () => {
           </span>
 
           {/* next song button */}
-          <RxTrackNext className="cursor-pointer mr-[20px]  hidden sm:block " />
+          <RxTrackNext
+            onClick={playNextSong}
+            className="cursor-pointer mr-[20px]  hidden sm:block "
+          />
 
           {/* shuffle button */}
           <ImShuffle className="cursor-pointer text-[20px]  hidden sm:block " />

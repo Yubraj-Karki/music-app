@@ -4,21 +4,11 @@ import { RiHeadphoneFill } from "react-icons/ri";
 
 import { SpotifyContext } from "../../context";
 
-import {
-  ArtistCard,
-  Searchbar,
-  PageTitle,
-  SectionTitle,
-  Song,
-  User,
-  Control,
-} from "../components/index";
-
-
+import { ArtistCard, PageTitle, SectionTitle, Song } from "../components/index";
 
 const Explore = () => {
-  const { songs} = useContext(SpotifyContext);
-  
+  const { songs } = useContext(SpotifyContext);
+
   // const { topTracks } = useContext(SpotifyContext);
   return (
     <div>
@@ -44,12 +34,10 @@ const Explore = () => {
           <div className="top-songs">
             <SectionTitle title="top songs" />
             <div className="grid sm:grid-cols-1 ">
-              {
-                songs.map((song, index)=> {
-                  const {id, name, artist, albumb, duration, img} = song;
-                  return <Song key={id} {...song} index={index} />
-                })
-              }
+              {songs.map((song, index) => {
+                const { id, name, artist, albumb, duration, img } = song;
+                return <Song key={id} {...song} index={index} />;
+              })}
             </div>
           </div>
           <div className="">
