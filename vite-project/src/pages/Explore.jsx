@@ -35,7 +35,7 @@ const Explore = () => {
             <SectionTitle title="top songs" />
             <div className="grid sm:grid-cols-1 ">
               {songs.map((song, index) => {
-                const { id, name, artist, albumb, duration, img } = song;
+                const { id, name, artist, album, duration, img } = song;
                 return <Song key={id} {...song} index={index} />;
               })}
             </div>
