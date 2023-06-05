@@ -190,6 +190,17 @@ const Control = () => {
     setCurrentSong(nextSong);
   };
 
+  const playPrevSong = () => {
+    let prevSong;
+    if (currentSongIndex == 0) {
+      prevSong = songs[songs.length - 1];
+    } else {
+      prevSong = songs[currentSongIndex - 1];
+    }
+
+    setCurrentSong(prevSong);
+  };
+
   return (
     <div className="fixed bottom-0 left-0 right-0 h-86px bg-[#0C0B39] p-4  sm:p-5">
       <div
@@ -258,7 +269,10 @@ const Control = () => {
           </span>
 
           {/* previous song button */}
-          <RxTrackPrevious className="cursor-pointer ml-[20px]  hidden sm:block " />
+          <RxTrackPrevious
+            onClick={playPrevSong}
+            className="cursor-pointer ml-[20px]  hidden sm:block "
+          />
           <span className="cursor-pointer flex justify-center items-center h-10 w-10 bg-[#fff] text-black rounded-full">
             {/* play/pause button based on state */}
             {isSongPlaying ? (
